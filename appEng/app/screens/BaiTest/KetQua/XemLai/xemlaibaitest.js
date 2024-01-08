@@ -27,7 +27,7 @@ import HTMLView from "react-native-htmlview";
 
 const Stack = createNativeStackNavigator();
 
-export default class xemlai extends React.Component {
+export default class Xemlai extends React.Component {
   constructor(props) {
     super(props);
     //this.itemRef = getDatabase(firebaseApp);
@@ -89,10 +89,10 @@ export default class xemlai extends React.Component {
   }
 
   dvt() {
-    for (var n = 0; n < this.state.item.length; n++) {
-      for (var m = 0; m < this.state.item.length; m++) {
+    for (var n = 0; n < this.state.itemK.length; n++) {
+      for (var m = 0; m < this.state.itemK.length; m++) {
         if (this.state.bl[n] == this.state.da[m]) {
-          //console.log('hehe',m);
+          console.log("hehe", m);
           this.kq = [...this.kq, m];
         } else {
           //console.log('hihi')
@@ -100,6 +100,7 @@ export default class xemlai extends React.Component {
       }
     }
   }
+
   check(inum) {
     if (this.state.itemQ.length >= inum) {
       [...Array(this.state.itemQ.length)].map((o, n) => {
@@ -125,20 +126,20 @@ export default class xemlai extends React.Component {
       });
       this.dvt();
     } else {
-      Alert.alert("Thông báo", "Phần này chưa có đủ bài tập...", [
-        {
-          text: "Ok",
-          onPress: () => this.goto(this.state.itemQ - 1),
-          style: "cancel",
-        },
-      ]);
+      // Alert.alert("Thông báo", "Phần này chưa có đủ bài tập...", [
+      //   {
+      //     text: "Ok",
+      //     onPress: () => this.goto(this.state.itemQ - 1),
+      //     style: "cancel",
+      //   },
+      // ]);
     }
   }
   async listenForItems(inum) {
-    console.log("ok ", this.state.itemQ);
+    console.log("-----ok itemK ket qua:  ", this.state.itemK);
 
-    if (this.state.item.length >= inum) {
-      [...Array(this.state.item.length)].map((o, n) => {
+    if (this.state.itemK.length >= inum) {
+      [...Array(this.state.itemK.length)].map((o, n) => {
         if (this.state.itemK[inum - 1] == this.state.item[n]) {
           //console.log('ok ',this.state.nameqs);
           this.setState({
@@ -222,23 +223,6 @@ export default class xemlai extends React.Component {
           ),
       }
     );
-  backAction = () => {
-    //Khong ho tro tieng Viet
-    Alert.alert("Hold on!", "Are you sure you want to go back?", [
-      {
-        text: "Cancel",
-        onPress: () => null,
-        style: "cancel",
-      },
-      {
-        text: "YES",
-        onPress: () => {
-          this.nvt.navigate("huongdan", { id: this.i, ten: this.detai });
-        },
-      },
-    ]);
-    return true;
-  };
 
   //-----------
 
@@ -264,43 +248,21 @@ export default class xemlai extends React.Component {
   //quang cao
   async componentDidMount() {
     this.listenForItems(1);
-    AdMobInterstitial.setAdUnitID("ca-app-pub-3940256099942544/1033173712");
-    await AdMobInterstitial.requestAdAsync({ servePersonalizedAds: false });
-    await AdMobInterstitial.showAdAsync();
+    // AdMobInterstitial.setAdUnitID("ca-app-pub-3940256099942544/1033173712");
+    // await AdMobInterstitial.requestAdAsync({ servePersonalizedAds: false });
+    // await AdMobInterstitial.showAdAsync();
   }
 
   render() {
     const windowWidth = Dimensions.get("window").width;
-    const windowHeight = Dimensions.get("window").height;
     const { route, navigation } = this.props;
     this.nvt = navigation;
-    const {
-      diem,
-      ds,
-      bailam,
-      cauhoi,
-      d0,
-      d1,
-      d2,
-      d3,
-      dapan,
-      socau,
-      uid,
-      email,
-    } = route.params;
-    const i = 1;
+    const { bailam, socau, uid, email } = route.params;
     var l = this.state.itemQ;
     const question = this.state.q;
-    //console.log('bai lam : ',bailam[l-1]);
-
-    //console.log('lua chon : ',this.state.o[l-1]);
-    //console.log('dap an : ',this.state.dapan);
-    //console.log(l);
-    //console.log(this.state.itemQ);
-    //console.log(this.state.o)
-    //console.log('danh sach: ',ds)
-    //console.log(this.state.item.length);
-
+    console.log("----------item::::", this.state.item);
+    console.log("-----------itemQ::::", this.state.itemQ);
+    console.log("------------itemK::::", this.state.itemK);
     if (l == 1) {
       this.state.hideHome = "none";
       this.state.hideBack = "none";
@@ -477,21 +439,6 @@ export default class xemlai extends React.Component {
                 <RadioButtons
                   options={this.state.o}
                   renderOption={(option, selected, onSelect, index) => {
-                    /*const s = selected ? { borderWidth:2,
-                                                borderColor:'#1CC625',
-                                                borderRadius:7,
-                                                padding:15,
-                                                flexDirection:'row',
-                                                marginBottom:'6%',} : { borderWidth:2,
-                                                    borderColor:'#f0f0f0',
-                                                    borderRadius:7,
-                                                    padding:15,
-                                                    flexDirection:'row',
-                                                    marginBottom:'6%',};
-                                                    */
-                    const windowWidth = Dimensions.get("window").width;
-                    //console.log("num: ",this.state.itemQ);
-                    //console.log("num: ",this.state.answ[this.state.itemQ-1]);
                     if (option == bailam[l - 1]) {
                       console.log("helloooooooo");
 

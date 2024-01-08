@@ -5,42 +5,46 @@ import { enableScreens } from "react-native-screens";
 import { NavigationContainer, DefaultTheme } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
-import front from "./app/screens/MoDau/front";
-import chontrinhdo from "./app/screens/TestForm/chontrinhdo";
+import Front from "./app/screens/MoDau/front";
+import Chontrinhdo from "./app/screens/TestForm/chontrinhdo";
 //layer trang chủ
 import Home from "./app/screens/Home/Home";
 //layer sau khi ấn vào từng danh mục tại menu
-import menuScreen from "./app/screens/List/menuScreen";
+import MenuScreen from "./app/screens/List/menuScreen";
 //layer footer
-import bTabs from "./bottomTabs";
+import BTabs from "./bottomTabs";
 //layer hướng dẫn trước khi kiểm tra
-import huongdan from "./app/screens/HuongDan/huongdan";
+import Huongdan from "./app/screens/HuongDan/huongdan";
 //layer kiểm tra
-import testScreen from "./app/screens/BaiTest/Test/testScreen";
+import TestScreen from "./app/screens/BaiTest/Test/testScreen";
 //xem ket qua
-import ketqua from "./app/screens/BaiTest/KetQua/ketqua";
+import Ketqua from "./app/screens/BaiTest/KetQua/ketqua";
 //
-import xemlai from "./app/screens/BaiTest/KetQua/XemLai/xemlaibaitest";
+import Xemlai from "./app/screens/BaiTest/KetQua/XemLai/xemlaibaitest";
 //test
-import testTimer from "./app/screens/TestForm/testTimer";
+import TestTimer from "./app/screens/TestForm/testTimer";
 //dang nhap dang ki
 import LoginScreen from "./app/screens/DangNhapDangKy/dangnhap";
 import SignUpScreen from "./app/screens/DangNhapDangKy/dangki";
 //
-import luachon from "./app/screens/List/luachon";
+import Luachon from "./app/screens/List/luachon";
 //
-import listbt from "./app/screens/List/listbt";
+import Listbt from "./app/screens/List/listbt";
 //
 import ProfileScreen from "./app/screens/User/userInfo";
 //
-import gioiThieu from "./app/screens/TestForm/gioithieu";
+import GioiThieu from "./app/screens/TestForm/gioithieu";
 //
-import speech from "./app/screens/HocSpeech/speech";
-import speechadd from "./app/screens/HocSpeech/speechadd";
-import sound from "./app/screens/HocSpeech/sound";
-import learnspeech from "./app/screens/HocSpeech/learnspeech";
+import Speech from "./app/screens/HocSpeech/speech";
+import Speechadd from "./app/screens/HocSpeech/speechadd";
+import Sound from "./app/screens/HocSpeech/sound";
+import Learnspeech from "./app/screens/HocSpeech/learnspeech";
 //thanh tich
-import thanhTich from "./app/screens/TestForm/thanhtich";
+import ThanhTich from "./app/screens/TestForm/thanhtich";
+import Game from "./app/screens/Games/Game";
+import Score from "./app/screens/Games/score/Score";
+import Learn from "./app/screens/Learn/learn";
+import Bxh from "./app/screens/bxh/bxh";
 
 const Stack = createNativeStackNavigator();
 //set màu cho screen
@@ -54,6 +58,7 @@ const navTheme = {
 
 export default class App extends React.Component {
   render() {
+    console.disableYellowBox = true;
     return (
       <NavigationContainer>
         <Stack.Navigator
@@ -62,12 +67,21 @@ export default class App extends React.Component {
         >
           <Stack.Screen
             name="front"
-            component={front}
+            component={Front}
             options={{ headerShown: false }}
           />
           <Stack.Screen
+            name="game"
+            component={Game}
+            options={{
+              title: "",
+              headerTransparent: true,
+              headerShadowVisible: false,
+            }}
+          />
+          <Stack.Screen
             name="chontrinhdo"
-            component={chontrinhdo}
+            component={Chontrinhdo}
             options={{ title: "" }}
           />
           <Stack.Screen
@@ -77,7 +91,7 @@ export default class App extends React.Component {
           />
           <Stack.Screen
             name="menuScreen"
-            component={menuScreen}
+            component={MenuScreen}
             options={{
               title: "",
               headerTransparent: true,
@@ -87,7 +101,7 @@ export default class App extends React.Component {
           />
           <Stack.Screen
             name="huongdan"
-            component={huongdan}
+            component={Huongdan}
             options={{
               title: "",
               headerTransparent: true,
@@ -95,10 +109,19 @@ export default class App extends React.Component {
               headerTintColor: "black",
             }}
           />
-
+          <Stack.Screen
+            name="Điểm"
+            component={Score}
+            options={{
+              title: "",
+              headerTransparent: true,
+              headerShadowVisible: false,
+              headerTintColor: "black",
+            }}
+          />
           <Stack.Screen
             name="testScreen"
-            component={testScreen}
+            component={TestScreen}
             options={{
               headerShown: false,
               title: "",
@@ -115,22 +138,22 @@ export default class App extends React.Component {
           />
           <Stack.Screen
             name="tm"
-            component={testTimer}
+            component={TestTimer}
             options={{ headerShown: false }}
           />
           <Stack.Screen
             name="btab"
-            component={bTabs}
+            component={BTabs}
             options={{ headerShown: false }}
           />
           <Stack.Screen
             name="kq"
-            component={ketqua}
+            component={Ketqua}
             options={{ headerShown: false }}
           />
           <Stack.Screen
             name="xemLaiTestScreen"
-            component={xemlai}
+            component={Xemlai}
             options={{ headerShown: false }}
           />
           <Stack.Screen
@@ -157,7 +180,7 @@ export default class App extends React.Component {
           />
           <Stack.Screen
             name="luachon"
-            component={luachon}
+            component={Luachon}
             options={{
               headerShown: true,
               title: "Kiến thức cần thiết cho bạn",
@@ -168,7 +191,7 @@ export default class App extends React.Component {
           />
           <Stack.Screen
             name="listbt"
-            component={listbt}
+            component={Listbt}
             options={{
               headerShown: true,
               title: "Chi tiết",
@@ -177,7 +200,6 @@ export default class App extends React.Component {
               headerTintColor: "#009f00",
             }}
           />
-
           <Stack.Screen
             name="ps"
             component={ProfileScreen}
@@ -189,10 +211,20 @@ export default class App extends React.Component {
               headerTintColor: "white",
             }}
           />
-
           <Stack.Screen
             name="gioithieu"
-            component={gioiThieu}
+            component={GioiThieu}
+            options={{
+              headerShown: true,
+              title: "",
+              headerTransparent: true,
+              headerShadowVisible: false,
+              headerTintColor: "white",
+            }}
+          />
+          <Stack.Screen
+            name="learn"
+            component={Learn}
             options={{
               headerShown: true,
               title: "",
@@ -203,7 +235,7 @@ export default class App extends React.Component {
           />
           <Stack.Screen
             name="speech"
-            component={speech}
+            component={Speech}
             options={{
               headerShown: true,
               title: "",
@@ -214,7 +246,7 @@ export default class App extends React.Component {
           />
           <Stack.Screen
             name="speechadd"
-            component={speechadd}
+            component={Speechadd}
             options={{
               headerShown: true,
               title: "",
@@ -225,7 +257,7 @@ export default class App extends React.Component {
           />
           <Stack.Screen
             name="sound"
-            component={sound}
+            component={Sound}
             options={{
               headerShown: true,
               title: "",
@@ -236,7 +268,7 @@ export default class App extends React.Component {
           />
           <Stack.Screen
             name="learnspeech"
-            component={learnspeech}
+            component={Learnspeech}
             options={{
               headerShown: true,
               title: "",
@@ -247,7 +279,7 @@ export default class App extends React.Component {
           />
           <Stack.Screen
             name="thanhtich"
-            component={thanhTich}
+            component={ThanhTich}
             options={{
               headerShown: true,
               title: "",
@@ -255,6 +287,11 @@ export default class App extends React.Component {
               headerShadowVisible: false,
               headerTintColor: "white",
             }}
+          />
+          <Stack.Screen
+            name="bxh"
+            component={Bxh}
+            options={{ title: "Bảng xếp hạng" }}
           />
         </Stack.Navigator>
       </NavigationContainer>

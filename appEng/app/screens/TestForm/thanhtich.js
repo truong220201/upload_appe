@@ -23,7 +23,7 @@ import {
 // } from 'expo-ads-admob'
 import * as Animatable from "react-native-animatable";
 
-class thanhTich extends React.Component {
+class ThanhTich extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -156,4 +156,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default thanhTich;
+export default ThanhTich;

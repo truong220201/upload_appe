@@ -28,7 +28,7 @@ import { getFirestore } from "firebase/firestore";
 
 import * as Animatable from "react-native-animatable";
 
-export default class huongdan extends React.Component {
+export default class Huongdan extends React.Component {
   constructor(props) {
     super(props);
     //this.itemRef = getDatabase(firebaseApp);
@@ -114,37 +114,28 @@ export default class huongdan extends React.Component {
     const querySnapshotQS = await getDocs(collection(db, "Question_ver2"));
 
     querySnapshotQS.forEach((doc) => {
-      //console.log(`name qs : ${doc.data().Option_ans[0]}`);
-      //console.log(`name qs : ${doc.id}`);
-      console.log("---------i: ", this.i);
       [...Array(this.i.length)].map((o, n) => {
-        console.log("---------i[n]: ", this.i[n]);
-        if (this.i[n] == `${doc.data().Id_cate_mtct}` || this.i[n] == 1) {
-          console.log("ok111111");
-          /*
-                    this.setState({
-                        
-                        itemK:[...this.state.itemK,`${doc.id}`],
-                        nameqs:[...this.state.nameqs,`${doc.data().name_Question}`], 
-                    })
-                    */
+        // console.log("i= ", this.i.toString());
+        if (
+          this.i[n] == `${doc.data().Id_cate_mtct}` &&
+          `${doc.data().Don_Kep}` != 1
+        ) {
+          console.log(
+            "---------- don_kep: ",
+            `${doc.data().Don_Kep}`.toString(),
+            `${doc.id}`.toString()
+          );
           this.itemK = [...this.itemK, `${doc.id}`];
           this.nameqs = [...this.nameqs, `${doc.data().Content_Question}`];
-
-          //this.item=[...this.item,`${doc.data().id_Question}`],
-          //nameqs:[...this.state.nameqs,1],
           (this.opt0 = [...this.opt0, `${doc.data().Option_ans[0]}`]),
             (this.opt1 = [...this.opt1, `${doc.data().Option_ans[1]}`]),
             (this.opt2 = [...this.opt2, `${doc.data().Option_ans[2]}`]),
             (this.opt3 = [...this.opt3, `${doc.data().Option_ans[3]}`]),
             (this.trueAns = [...this.trueAns, `${doc.data().True_ans}`]),
             (this.isLoading = false);
-          //this.idOpt=[...this.idOpt,`${doc.id}`]
         }
       });
     });
-    //random itemK va nameqs
-
     //this.shuffle(this.i)
   }
 

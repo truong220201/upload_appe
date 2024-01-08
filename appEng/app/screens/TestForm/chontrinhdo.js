@@ -14,7 +14,7 @@ import {
 import { FontAwesome5 } from "@expo/vector-icons";
 import { LinearGradient } from "expo-linear-gradient";
 
-export default class chontrinhdo extends React.Component {
+export default class Chontrinhdo extends React.Component {
   render() {
     return (
       <LinearGradient

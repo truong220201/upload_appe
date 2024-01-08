@@ -23,7 +23,7 @@ import {
 // } from 'expo-ads-admob'
 import * as Animatable from "react-native-animatable";
 
-class testTimer extends React.Component {
+class TestTimer extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -352,4 +352,4 @@ const styles = StyleSheet.create({
   //end footer
 });
 
-export default testTimer;
+export default TestTimer;

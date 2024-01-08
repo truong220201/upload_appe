@@ -236,12 +236,11 @@ export default class Home extends React.Component {
                   </View>
                 </View>
               </View>
-
               <View
                 style={{
                   position: "absolute",
                   top: "68%",
-                  left: "60%",
+                  left: "40%",
                   flexDirection: "row",
                 }}
               >
@@ -271,7 +270,7 @@ export default class Home extends React.Component {
                       borderRadius: 50,
                     }}
                     source={{
-                      uri: "https://scontent.fhan5-9.fna.fbcdn.net/v/t39.30808-6/285241453_113154581411021_2548286332871783501_n.jpg?stp=dst-jpg_p526x296&_nc_cat=109&ccb=1-7&_nc_sid=8bfeb9&_nc_ohc=XwvIX9584FsAX-JnusG&_nc_ht=scontent.fhan5-9.fna&oh=00_AT8FJZHyuqo3bTe2e3ZXSfPjZQ6fgm-s6hFSK2WvtpQLUQ&oe=629DB121",
+                      uri: "https://media.istockphoto.com/id/1441157364/vi/vec-to/50-ph%C3%BAt-kh%C3%A1i-ni%E1%BB%87m-th%E1%BB%9Di-gian-h%E1%BA%B9n-gi%E1%BB%9D-minh-h%E1%BB%8Da-%C4%91%E1%BB%93ng-h%E1%BB%93-vector.jpg?s=1024x1024&w=is&k=20&c=NzztWFo0ZSePKiGr2sLjpXUitTOSA8i3TOjD2IT9BiQ=",
                     }}
                   />
                   <Text
@@ -282,6 +281,49 @@ export default class Home extends React.Component {
                     }}
                   >
                     50 min
+                  </Text>
+                </TouchableOpacity>
+              </View>
+              <View
+                style={{
+                  position: "absolute",
+                  top: "68%",
+                  left: "60%",
+                  flexDirection: "row",
+                }}
+              >
+                <TouchableOpacity
+                  onPress={() =>
+                    navigation.navigate("game", {
+                      id: Math.floor(Math.random() * 4) + 1,
+                    })
+                  }
+                  style={{
+                    flexDirection: "column",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    width: 40,
+                    marginLeft: 40,
+                  }}
+                >
+                  <Image
+                    style={{
+                      width: 50,
+                      height: 50,
+                      borderRadius: 50,
+                    }}
+                    source={{
+                      uri: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/94/Video-Game-Controller-Icon-D-Edit.svg/512px-Video-Game-Controller-Icon-D-Edit.svg.png",
+                    }}
+                  />
+                  <Text
+                    style={{
+                      color: "#475b52",
+                      fontSize: windowWidth / 40,
+                      fontWeight: "bold",
+                    }}
+                  >
+                    Game
                   </Text>
                 </TouchableOpacity>
               </View>
@@ -310,7 +352,7 @@ export default class Home extends React.Component {
                       borderRadius: 50,
                     }}
                     source={{
-                      uri: "https://media.istockphoto.com/photos/its-time-to-learn-english-written-on-speech-bubble-with-pencil-on-picture-id1257072108",
+                      uri: "https://img.freepik.com/free-photo/sound-volume-up-front-side-with-white-background_187299-39989.jpg?size=338&ext=jpg&ga=GA1.1.1546980028.1701907200&semt=ais",
                     }}
                   />
                   <Text
@@ -324,6 +366,7 @@ export default class Home extends React.Component {
                   </Text>
                 </TouchableOpacity>
               </View>
+
               <View
                 style={{
                   position: "absolute",

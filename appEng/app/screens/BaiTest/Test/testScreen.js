@@ -1,26 +1,20 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   Dimensions,
   TouchableOpacity,
   ScrollView,
   Text,
   View,
-  Button,
-  StyleSheet,
   Alert,
-  BackHandler,
   ActivityIndicator,
   SafeAreaView,
-  Image,
 } from "react-native";
 import { Icon } from "react-native-elements";
 import { firebaseApp } from "../../../../components/firebaseConfig";
 import { getFirestore } from "firebase/firestore";
 import { collection, getDocs } from "firebase/firestore";
-import CountDown from "react-native-countdown-component";
-
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import { RadioButtons, SegmentedControls } from "react-native-radio-buttons";
+import { RadioButtons } from "react-native-radio-buttons";
 import { LinearGradient } from "expo-linear-gradient";
 import { doc, setDoc } from "firebase/firestore";
 
@@ -34,11 +28,9 @@ import * as Animatable from "react-native-animatable";
 
 const Stack = createNativeStackNavigator();
 
-export default class testScreen extends React.Component {
+export default class TestScreen extends React.Component {
   constructor(props) {
     super(props);
-    //this.itemRef = getDatabase(firebaseApp);
-    //console.log(this.itemRef);
     const { route, navigation } = this.props;
     this.nvt = navigation;
     const {
@@ -57,7 +49,6 @@ export default class testScreen extends React.Component {
       socau,
       tg,
     } = route.params;
-    //console.log('baitap:',opt0);
     console.log("uid form test:", uid);
 
     //doi mau
@@ -95,11 +86,7 @@ export default class testScreen extends React.Component {
       isLoading: true,
       hideBack: "flex",
       hideNext: "flex",
-      timer: 500,
       keys: [],
-      //id question
-      //item:item,
-      //
       itemQ: 1,
       opt0: opt0,
       opt1: opt1,
@@ -126,371 +113,15 @@ export default class testScreen extends React.Component {
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         0, 0,
       ],
-      //id option
-      //idOption:idOpt,
       idO: "",
     };
-
-    //this.opt = this.state.options;
-  }
-
-  //Thay doi bai tap
-  check(inum) {
-    console.log("bai : ", inum);
-    console.log("length: ", this.state.item.length);
-    //console.log('inum: ',inum)
-    if (this.state.item.length >= inum) {
-      //console.log('itemK: ',this.state.itemK[inum-1]);
-      //console.log('item: ',this.state.item);
-      this.listenForItems(inum);
-    } else {
-      Alert.alert("Thông báo", "Phần này chưa có đủ bài tập...", [
-        {
-          text: "Ok",
-          onPress: () => null,
-          style: "cancel",
-        },
-      ]);
-    }
-  }
-
-  //reset sau moi lan lap
-  reset() {
-    this.setState({
-      o: [],
-      q: "",
-      ans: "",
-    });
-    //loại bỏ số 1 sau mảng item sau mỗi lần lặp
-    const valueToRemove = 1;
-    const new_arr = this.state.itemK.filter((item) => item !== valueToRemove);
-    this.setState({
-      itemK: new_arr,
-    });
-  }
-
-  //dat va lay du lieu user
-  async setUser(email, diem, uid) {
-    const db = getFirestore(firebaseApp);
-    console.log("uiddddddd:", uid);
-    await setDoc(doc(db, "User", uid), {
-      Email: email,
-      Diem: diem,
-      Uid: uid,
-    });
-  }
-
-  async getUser(uid) {
-    const db = getFirestore(firebaseApp);
-    const querySnapshotUser = await getDocs(collection(db, "User"));
-
-    querySnapshotUser.forEach((doc) => {
-      //console.log(`name qs : ${doc.data().Id_cate_mtct}`);
-
-      console.log("uida:", uid);
-      console.log("user: ", `${doc.data().Uid}`);
-      if (`${doc.data().Uid}` == uid) {
-        if (`${doc.data().Uid}` == 0) {
-          this.diems = 0;
-          this.setUser(this.email, this.diems, uid);
-        } else {
-          this.diems = this.diems + parseInt(`${doc.data().Diem}`);
-          this.setUser(this.email, this.diems, uid);
-        }
-      } else {
-        this.setUser(this.email, this.diems, uid);
-      }
-    });
-  }
-
-  listenForItems(inum) {
-    if (this.state.itemK.length >= inum) {
-      //console.log('ok ',this.state.opt1[inum-1]);
-      this.setState({
-        //item:this.state.item.push(data)
-        //item:Object.keys(`${doc.data().Title}`)
-        //re-render khi su dung shouldComponentUpdate
-        itemK: [...this.state.itemK, 1],
-        //
-        itemQ: inum,
-        q: this.state.nameqs[inum - 1],
-        o: [
-          this.state.opt0[inum - 1],
-          this.state.opt1[inum - 1],
-          this.state.opt2[inum - 1],
-          this.state.opt3[inum - 1],
-        ],
-        ans: this.state.trueAns[inum - 1],
-        //answ:[...this.state.answ[inum-1]=this.state.trueAns[inum-1]],
-        //opt0:[...this.state.opt0,`${doc.data().Option_ans[0]}`],
-        isLoading: false,
-        //idO:this.state.idOption[n],
-      });
-      console.log("itemK :" + this.state.itemK);
-      //console.log('length:'+this.state.leng);
-    } else {
-      Alert.alert("Thông báo", "Phần này chưa có đủ bài tập...", [
-        {
-          text: "Ok",
-          onPress: () => this.goto(this.state.itemQ),
-          style: "cancel",
-        },
-      ]);
-    }
-  }
-
-  //dap an duoc chon
-  setSelectedOption(selectedOption) {
-    this.setState({
-      optList: [...this.state.optList, selectedOption],
-      //answ:[...this.state.answ[this.state.itemQ-1]=this.state.trueAns[this.state.itemQ-1]],
-
-      selectedOption,
-    });
-    this.state.answ[this.state.itemQ - 1] = selectedOption;
-    console.log(this.state.answ);
-  }
-
-  renderContainer(optionNodes) {
-    return <View>{optionNodes}</View>;
-  }
-
-  //xu ly su kien cho nhung button chuyen bai tap
-  goto(g) {
-    //this.check(g);
-    this.reset();
-    this.listenForItems(g);
-  }
-  goNext(g) {
-    if (g > 10) {
-      this.reset();
-      this.listenForItems(1);
-    } else {
-      this.reset();
-      this.listenForItems(g);
-    }
-  }
-  goBack(g) {
-    if (g < 1) {
-      this.reset();
-      this.listenForItems(10);
-    } else {
-      this.reset();
-      this.listenForItems(g);
-    }
-  }
-
-  //su kien cho nut back, exit
-  qsExit = () =>
-    Alert.alert(
-      "Nhắc nhở",
-      "Bạn muốn hủy bài kiểm tra?",
-      [
-        {
-          text: "Không",
-          onPress: () => null,
-          style: "cancel",
-        },
-        {
-          text: "Có",
-          onPress: () => {
-            this.nvt.navigate("huongdan", {
-              id: this.id,
-              ten: this.ten,
-              uid: this.uid,
-              email: this.email,
-              socau: 10,
-              tg: 15,
-            });
-          },
-          style: "cancel",
-        },
-      ],
-      {
-        cancelable: true,
-        onDismiss: () =>
-          Alert.alert(
-            "This alert was dismissed by tapping outside of the alert dialog."
-          ),
-      }
-    );
-  backAction = () => {
-    //Khong ho tro tieng Viet
-    Alert.alert("Hold on!", "Are you sure you want to go back?", [
-      {
-        text: "Cancel",
-        onPress: () => null,
-        style: "cancel",
-      },
-      {
-        text: "YES",
-        onPress: () => {
-          this.nvt.navigate("huongdan", { id: this.i, ten: this.detai });
-        },
-      },
-    ]);
-    return true;
-  };
-
-  //tinh diem sau khi nop bai
-  dvt() {
-    console.log("this.state.itemQ", this.state.itemQ);
-    for (var n = 0; n < this.state.item.length; n++) {
-      for (var m = 0; m < this.state.item.length; m++) {
-        if (this.state.answ[n] == this.state.trueAns[m]) {
-          this.diems++;
-        } else {
-          //console.log('hihi')
-        }
-      }
-    }
-  }
-
-  //luu diem len firestore
-  luudiem() {
-    this.getUser();
-    console.log(this.uid);
-  }
-
-  //su kien nut nop bai
-  nopbai(y) {
-    if (y == true) {
-      this.nvt.navigate("kq", {
-        diem: this.diems,
-        item: this.state.item,
-        itemK: this.state.itemK,
-        ds: this.state.o,
-        bailam: this.state.answ,
-        cauhoi: this.state.nameqs,
-        d0: this.state.opt0,
-        d1: this.state.opt1,
-        d2: this.state.opt2,
-        d3: this.state.opt3,
-        dapan: this.state.trueAns,
-        socau: this.state.socau,
-        uid: this.uid,
-        email: this.email,
-      });
-    } else {
-      Alert.alert(
-        "Nhắc nhở",
-        "Bạn muốn nộp bài?",
-        [
-          {
-            text: "Không",
-            onPress: () => null,
-            style: "cancel",
-          },
-          {
-            text: "Có",
-            onPress: () => {
-              this.getUser(this.uid);
-              console.log("nop bai");
-              this.dvt();
-              //console.log('diem: ',this.diems);
-              //console.log("da lam: ",this.state.answ);
-              this.nvt.navigate("kq", {
-                diem: this.diems,
-                item: this.state.item,
-                itemK: this.state.itemK,
-                ds: this.state.o,
-                bailam: this.state.answ,
-                cauhoi: this.state.nameqs,
-                d0: this.state.opt0,
-                d1: this.state.opt1,
-                d2: this.state.opt2,
-                d3: this.state.opt3,
-                dapan: this.state.trueAns,
-                socau: this.state.socau,
-                uid: this.uid,
-                email: this.email,
-              });
-            },
-            style: "cancel",
-          },
-        ],
-        {
-          cancelable: true,
-          onDismiss: () =>
-            Alert.alert(
-              "This alert was dismissed by tapping outside of the alert dialog."
-            ),
-        }
-      );
-      console.log(this.uid);
-    }
-  }
-
-  chiatg() {
-    //console.log('ok',this.state.tgian)
-    if (this.state.tgian == 50) {
-      return true;
-    } else {
-      return false;
-    }
-  }
-
-  //-----------
-
-  //life cycle
-  componentDidMount() {
-    this.listenForItems(this.num);
-    //Timer
-    this.interval = setInterval(
-      () => this.setState((prevState) => ({ timer: prevState.timer - 1 })),
-      1000
-    );
-    //BackHandler
-    // this.backHandler = BackHandler.addEventListener(
-    //   "hardwareBackPress",
-    //   this.backAction
-    // );
-    // this.backHandler.remove();
-  }
-  //   componentWillUnmount() {
-  //     clearInterval(this.interval);
-  //   }
-  //   componentDidUpdate() {
-  //     if (this.state.timer === 1) {
-  //       clearInterval(this.interval);
-  //     }
-  //   }
-  //   //tranh render lai khong can thiet
-  //   shouldComponentUpdate(nextProps, nextState) {
-  //     if (this.state.itemK !== nextState.itemK) {
-  //       return true;
-  //     }
-  //     return false;
-  //   }
-  componentWillUnmount() {
-    clearInterval(this.interval);
-
-    //   this.backHandler.remove();
   }
 
   render() {
     const windowWidth = Dimensions.get("window").width;
     const windowHeight = Dimensions.get("window").height;
-    const { route, navigation } = this.props;
-    const { baitap, name, idOpt, itemK, opt0 } = route.params;
-    //console.log('item K : ',opt0)
-    const i = baitap;
-    const tg = this.state.tgian;
     var l = this.state.itemQ;
-    //console.log('answ: ',this.state.answ[this.state.itemQ])
-    const question1 = this.state.q;
-    const question = { html: this.state.q };
     const questiona = this.state.q;
-    //console.log(this.tagsStyles);
-    //console.log(this.state.o);
-    //console.log('render',this.state.opt0);
-    // console.log("o:", this.state.o);
-    const source = {
-      html: `
-      <p style='text-align:center;'>
-        Hello World!
-      </p>`,
-    };
 
     const duoilentren = {
       from: {
@@ -550,33 +181,10 @@ export default class testScreen extends React.Component {
                     flex: 5,
                   }}
                 >
-                  {this.chiatg() ? (
-                    <CountDown
-                      size={17}
-                      until={50 * 60}
-                      onFinish={() => this.nopbai(true)}
-                      digitStyle={{ backgroundColor: "#FFF" }}
-                      digitTxtStyle={{ color: "#53ad71" }}
-                      timeLabelStyle={{ color: "red", fontWeight: "300" }}
-                      separatorStyle={{ color: "#53ad71" }}
-                      timeToShow={["M", "S"]}
-                      timeLabels={{ m: null, s: null }}
-                      showSeparator
-                    />
-                  ) : (
-                    <CountDown
-                      size={17}
-                      until={10 * 60}
-                      onFinish={() => this.nopbai(true)}
-                      digitStyle={{ backgroundColor: "#FFF" }}
-                      digitTxtStyle={{ color: "#53ad71" }}
-                      timeLabelStyle={{ color: "red", fontWeight: "300" }}
-                      separatorStyle={{ color: "#53ad71" }}
-                      timeToShow={["M", "S"]}
-                      timeLabels={{ m: null, s: null }}
-                      showSeparator
-                    />
-                  )}
+                  <CountdownTimer
+                    onTimerEnd={() => this.nopbai(true)}
+                    num={!this.chiatg() ? 10 : 50}
+                  />
                   <Icon
                     name={"alarm"}
                     size={20}
@@ -719,21 +327,7 @@ export default class testScreen extends React.Component {
                       onSelection={this.setSelectedOption.bind(this)}
                       selectedOption={this.state.selectedOption}
                       renderOption={(option, selected, onSelect, index) => {
-                        /*const s = selected ? { borderWidth:2,
-                                                borderColor:'#1CC625',
-                                                borderRadius:7,
-                                                padding:15,
-                                                flexDirection:'row',
-                                                marginBottom:'6%',} : { borderWidth:2,
-                                                    borderColor:'#f0f0f0',
-                                                    borderRadius:7,
-                                                    padding:15,
-                                                    flexDirection:'row',
-                                                    marginBottom:'6%',};
-                                                    */
                         const windowWidth = Dimensions.get("window").width;
-                        //console.log("num: ",this.state.itemQ);
-                        //console.log("num: ",this.state.answ[this.state.itemQ-1]);
                         if (option == this.state.answ[this.state.itemQ - 1]) {
                           return (
                             <LinearGradient
@@ -770,7 +364,8 @@ export default class testScreen extends React.Component {
                                     width: "100%",
                                     height: "100%",
                                     borderWidth: 0,
-                                    backgroundColor: "#ffffff00",
+                                    borderRadius: 10,
+                                    backgroundColor: "#ffffff",
                                   }}
                                 >
                                   <WebView
@@ -883,8 +478,353 @@ export default class testScreen extends React.Component {
       </SafeAreaView>
     );
   }
+  //Thay doi bai tap
+  check(inum) {
+    console.log("bai : ", inum);
+    console.log("length: ", this.state.item.length);
+    //console.log('inum: ',inum)
+    if (this.state.itemQ.length >= inum) {
+      this.listenForItems(inum);
+    } else {
+      Alert.alert("Thông báo", "Phần này chưa có đủ bài tập...", [
+        {
+          text: "Ok",
+          onPress: () => null,
+          style: "cancel",
+        },
+      ]);
+    }
+  }
+
+  //reset sau moi lan lap
+  reset() {
+    this.setState({
+      o: [],
+      q: "",
+      ans: "",
+    });
+    //loại bỏ số 1 sau mảng item sau mỗi lần lặp
+    const valueToRemove = 1;
+    const new_arr = this.state.itemK.filter((item) => item !== valueToRemove);
+    this.setState({
+      itemK: new_arr,
+    });
+  }
+
+  //dat va lay du lieu user
+  async setUser(email, diem, uid) {
+    const db = getFirestore(firebaseApp);
+    console.log("uiddddddd:", uid);
+    await setDoc(doc(db, "User", uid), {
+      Email: email,
+      Diem: diem,
+      Uid: uid,
+    });
+  }
+
+  async getUser(uid) {
+    const db = getFirestore(firebaseApp);
+    const querySnapshotUser = await getDocs(collection(db, "User"));
+
+    querySnapshotUser.forEach((doc) => {
+      //console.log(`name qs : ${doc.data().Id_cate_mtct}`);
+
+      console.log("uida:", uid);
+      console.log("user: ", `${doc.data().Uid}`);
+      if (`${doc.data().Uid}` == uid) {
+        if (`${doc.data().Uid}` == 0) {
+          this.diems = 0;
+          this.setUser(this.email, this.diems, uid);
+        } else {
+          this.diems = this.diems + parseInt(`${doc.data().Diem}`);
+          this.setUser(this.email, this.diems, uid);
+        }
+      } else {
+        this.setUser(this.email, this.diems, uid);
+      }
+    });
+  }
+
+  listenForItems(inum) {
+    if (this.state.itemK.length >= inum) {
+      this.setState({
+        itemK: [...this.state.itemK, 1],
+        //
+        itemQ: inum,
+        q: this.state.nameqs[inum - 1],
+        o: [
+          this.state.opt0[inum - 1],
+          this.state.opt1[inum - 1],
+          this.state.opt2[inum - 1],
+          this.state.opt3[inum - 1],
+        ],
+        ans: this.state.trueAns[inum - 1],
+        isLoading: false,
+      });
+      console.log("itemK :" + this.state.itemK);
+    } else {
+      Alert.alert("Thông báo", "Phần này chưa có đủ bài tập...", [
+        {
+          text: "Ok",
+          onPress: () => this.goto(this.state.itemQ),
+          style: "cancel",
+        },
+      ]);
+    }
+  }
+
+  //dap an duoc chon
+  setSelectedOption(selectedOption) {
+    this.setState({
+      optList: [...this.state.optList, selectedOption],
+      //answ:[...this.state.answ[this.state.itemQ-1]=this.state.trueAns[this.state.itemQ-1]],
+
+      selectedOption,
+    });
+    this.state.answ[this.state.itemQ - 1] = selectedOption;
+    console.log(this.state.answ);
+  }
+
+  renderContainer(optionNodes) {
+    return <View>{optionNodes}</View>;
+  }
+
+  //xu ly su kien cho nhung button chuyen bai tap
+  goto(g) {
+    //this.check(g);
+    this.reset();
+    this.listenForItems(g);
+  }
+  goNext(g) {
+    if (g > 10) {
+      this.reset();
+      this.listenForItems(1);
+    } else {
+      this.reset();
+      this.listenForItems(g);
+    }
+  }
+  goBack(g) {
+    if (g < 1) {
+      this.reset();
+      this.listenForItems(10);
+    } else {
+      this.reset();
+      this.listenForItems(g);
+    }
+  }
+
+  //su kien cho nut back, exit
+  qsExit = () =>
+    Alert.alert(
+      "Nhắc nhở",
+      "Bạn muốn hủy bài kiểm tra?",
+      [
+        {
+          text: "Không",
+          onPress: () => null,
+          style: "cancel",
+        },
+        {
+          text: "Có",
+          onPress: () => {
+            clearInterval(this.interval);
+            // this.nvt.goBack;
+            this.nvt.navigate("huongdan", {
+              id: this.id,
+              ten: this.ten,
+              uid: this.uid,
+              email: this.email,
+              socau: 10,
+              tg: 15,
+            });
+          },
+          style: "cancel",
+        },
+      ],
+      {
+        cancelable: true,
+        onDismiss: () =>
+          Alert.alert(
+            "This alert was dismissed by tapping outside of the alert dialog."
+          ),
+      }
+    );
+  backAction = () => {
+    //Khong ho tro tieng Viet
+    Alert.alert("Hold on!", "Are you sure you want to go back?", [
+      {
+        text: "Cancel",
+        onPress: () => null,
+        style: "cancel",
+      },
+      {
+        text: "YES",
+        onPress: () => {
+          this.nvt.navigate("huongdan", { id: this.i, ten: this.detai });
+        },
+      },
+    ]);
+    return true;
+  };
+
+  //tinh diem sau khi nop bai
+  dvt() {
+    console.log("this.state.itemQ", this.state.itemQ);
+    for (var n = 0; n < this.state.socau.length; n++) {
+      for (var m = 0; m < this.state.socau.length; m++) {
+        if (this.state.answ[n] == this.state.trueAns[m]) {
+          this.diems++;
+        } else {
+          //console.log('hihi')
+        }
+      }
+    }
+  }
+
+  //luu diem len firestore
+  luudiem() {
+    this.getUser();
+    console.log(this.uid);
+  }
+
+  //su kien nut nop bai
+  nopbai(y) {
+    if (y == true) {
+      this.nvt.navigate("kq", {
+        diem: this.diems,
+        item: this.state.item,
+        itemK: this.state.itemK,
+        ds: this.state.o,
+        bailam: this.state.answ,
+        cauhoi: this.state.nameqs,
+        d0: this.state.opt0,
+        d1: this.state.opt1,
+        d2: this.state.opt2,
+        d3: this.state.opt3,
+        dapan: this.state.trueAns,
+        socau: this.state.socau,
+        uid: this.uid,
+        email: this.email,
+      });
+    } else {
+      Alert.alert(
+        "Nhắc nhở",
+        "Bạn muốn nộp bài?",
+        [
+          {
+            text: "Không",
+            onPress: () => null,
+            style: "cancel",
+          },
+          {
+            text: "Có",
+            onPress: () => {
+              this.getUser(this.uid);
+              console.log("nop bai");
+              this.dvt();
+              this.nvt.navigate("kq", {
+                diem: this.diems,
+                item: this.state.item,
+                itemK: this.state.itemK,
+                ds: this.state.o,
+                bailam: this.state.answ,
+                cauhoi: this.state.nameqs,
+                d0: this.state.opt0,
+                d1: this.state.opt1,
+                d2: this.state.opt2,
+                d3: this.state.opt3,
+                dapan: this.state.trueAns,
+                socau: this.state.socau,
+                uid: this.uid,
+                email: this.email,
+              });
+            },
+            style: "cancel",
+          },
+        ],
+        {
+          cancelable: true,
+          onDismiss: () =>
+            Alert.alert(
+              "This alert was dismissed by tapping outside of the alert dialog."
+            ),
+        }
+      );
+      console.log(this.uid);
+    }
+  }
+
+  chiatg() {
+    if (this.state.tgian == 50) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+  componentWillUnmount() {
+    clearInterval(this.interval);
+  }
+
+  componentDidMount() {
+    this.listenForItems(this.num);
+
+    this.interval = setInterval(
+      () => this.setState((prevState) => ({ timer: prevState.timer - 1 })),
+      1000
+    );
+  }
+
+  componentDidUpdate() {
+    if (this.state.timer === 1) {
+      clearInterval(this.interval);
+    }
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.interval);
+  }
 }
 
-const html = StyleSheet.create({
-  span: {},
-});
+const CountdownTimer = ({ onTimerEnd, num }) => {
+  const [seconds, setSeconds] = useState(num * 60); // 10 minutes in seconds
+  const [countdownEnded, setCountdownEnded] = useState(false);
+  useEffect(() => {
+    // const interval = setInterval(async () => {
+    if (seconds > 0) {
+      const interval = setInterval(() => {
+        setSeconds((prevSeconds) => prevSeconds - 1);
+      }, 1000);
+      return () => {
+        // console.log("clearInterval!");
+
+        clearInterval(interval);
+      };
+    } else {
+      setCountdownEnded(true);
+    }
+
+    // }
+    // );
+  }, [seconds]);
+
+  useEffect(() => {
+    if (countdownEnded) {
+      onTimerEnd();
+    }
+  }, [countdownEnded, onTimerEnd]);
+
+  const displayTime = () => {
+    const minutes = Math.floor(seconds / 60);
+    const remainingSeconds = seconds % 60;
+    return `${minutes < 10 ? "0" : ""}${minutes}:${
+      remainingSeconds < 10 ? "0" : ""
+    }${remainingSeconds}`;
+  };
+
+  return (
+    <View>
+      <Text>{displayTime()}</Text>
+    </View>
+  );
+};
