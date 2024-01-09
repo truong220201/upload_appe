@@ -19,12 +19,6 @@ import { doc, setDoc } from "firebase/firestore";
 import { collection, getDocs } from "firebase/firestore";
 import { firebaseApp } from "../../../components/firebaseConfig";
 import { getFirestore } from "firebase/firestore";
-// import {
-//     AdMobBanner,
-//     AdMobInterstitial,
-//     PublisherBanner,
-//     AdMobRewarded,
-//   } from 'expo-ads-admob'
 
 import * as Animatable from "react-native-animatable";
 

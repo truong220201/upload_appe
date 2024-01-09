@@ -8,12 +8,20 @@ import {
   ScrollView,
   SafeAreaView,
   Alert,
+  CardField,
   LinearGradient,
 } from "react-native";
 import { Icon } from "react-native-elements";
 import { firebaseApp } from "../../../components/firebaseConfig";
 import { getFirestore } from "firebase/firestore";
 import { collection, getDocs } from "firebase/firestore";
+import {
+  StripeProvider,
+  usePaymentSheet,
+  useStripe,
+} from "@stripe/stripe-react-native";
+import { API_URL } from "../config/config";
+import { Paystack, paystackProps } from "react-native-paystack-webview";
 
 class ProfileScreen extends React.Component {
   constructor(props) {
@@ -74,6 +82,7 @@ class ProfileScreen extends React.Component {
       ]
     );
   }
+  // const [loading, setLoading] = useEffect(false);
   render() {
     const emaila = this.email;
     const diemtla = this.state.diemtl;
@@ -95,7 +104,7 @@ class ProfileScreen extends React.Component {
           <Image
             style={styles.userImg}
             source={{
-              uri: "https://st.quantrimang.com/photos/image/2021/03/09/Hinh-nen-bo-sua-3.jpg",
+              uri: "https://icons.veryicon.com/png/o/internet--web/prejudice/user-128.png",
             }}
           />
           <Text style={styles.userName}>Email: {emaila}</Text>
@@ -145,6 +154,15 @@ class ProfileScreen extends React.Component {
               <Text style={styles.userBtnTxtL}>Logout</Text>
             </TouchableOpacity>
           </View>
+          <View style={styles.userBtnWrapper}>
+            <TouchableOpacity
+              style={styles.userBtn}
+              onPress={() => navigation.navigate("thanhtoan")}
+            >
+              <Text style={styles.userBtnTxtH}>Nâng cấp tài khoản ngay! </Text>
+            </TouchableOpacity>
+          </View>
+          {/* <PaymentScreen /> */}
         </ScrollView>
         <View style={styles.footer}>
           <TouchableOpacity
@@ -214,6 +232,21 @@ const styles = StyleSheet.create({
     marginBottom: 10,
     color: "#fa842a",
   },
+  userBtnWrapperY: {
+    flexDirection: "row",
+    justifyContent: "center",
+    width: "100%",
+    marginBottom: 10,
+    color: "#fa842a",
+  },
+  userBtnY: {
+    borderColor: "#fa842a",
+    borderWidth: 2,
+    borderRadius: 10,
+    paddingVertical: 8,
+    paddingHorizontal: 12,
+    marginHorizontal: 5,
+  },
   userBtn: {
     borderColor: "#fa842a",
     borderWidth: 2,
@@ -268,3 +301,94 @@ const styles = StyleSheet.create({
     textAlign: "center",
   },
 });
+
+const UserBuy = () => {
+  const { initPaymentSheet, presentPaymentSheet } = useStripe();
+  const [loading, setLoading] = useState(false);
+  useEffect(() => {
+    initializePaymentSheet();
+  }, []);
+  const fetchPaymentSheetParams = async () => {
+    const response = await fetch(`${API_URL}`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    const { paymentIntent, ephemeralKey, customer } = await response.json();
+    console.log("aaaa:" + paymentIntent);
+    return {
+      paymentIntent,
+      ephemeralKey,
+      customer,
+    };
+  };
+
+  const initializePaymentSheet = async () => {
+    const { paymentIntent, ephemeralKey, customer, publishableKey } =
+      await fetchPaymentSheetParams();
+
+    console.log("run here--------");
+    const { error } = await initPaymentSheet({
+      merchantDisplayName: "example",
+      customerId: customer,
+      customerEphemeralKeySecret: ephemeralKey,
+      paymentIntentClientSecret: paymentIntent,
+      allowsDelayedPaymentMethods: true,
+      defaultBillingDetails: {
+        name: "Jane Doe",
+      },
+    });
+
+    if (!error) {
+      setLoading(true);
+    }
+  };
+
+  const openPaymentSheet = async () => {
+    console.log("press start--------");
+    const error = await presentPaymentSheet();
+    if (error) {
+      Alert.alert(`Error code: ${error.code}`, error.message);
+    } else {
+      Alert.alert("Success", "Your order is confirmed!");
+    }
+  };
+
+  return (
+    <View style={styles.userBtnWrapper}>
+      <TouchableOpacity
+        style={styles.userBtn}
+        onPress={() => navigation.navigate("thanhtoan")}
+      >
+        <Text style={styles.userBtnTxtH}>Nâng cấp tài khoản ngay! </Text>
+      </TouchableOpacity>
+    </View>
+  );
+};
+function Pay() {
+  // const paystackWebViewRef = useRef<paystackProps.PayStackRef>(a);
+  return (
+    <View style={{ flex: 1 }}>
+      <Paystack
+        paystackKey="pk_test_be6835db92f7860c7fdfef8f58b74714d5426597"
+        // paystackSecretKey="sk_test_a83fc5d0daf2d464c79bcf210ce7e6c0f0b8e1a3"
+        // paymentIntentClientSecret="sk_test_a83fc5d0daf2d464c79bcf210ce7e6c0f0b8e1a3"
+        currency="USD"
+        // channels={JSON.stringify(["card", "ussd"])}
+        amount={"25000"}
+        phone="0923719421"
+        billingEmail="sakurain199@gmail.com"
+        activityIndicatorColor="green"
+        onCancel={(e) => {
+          // handle response here
+        }}
+        onSuccess={(res) => {
+          // handle response here
+        }}
+        autoStart={true}
+        // ref={paystackWebViewRef}
+      />
+    </View>
+  );
+}
