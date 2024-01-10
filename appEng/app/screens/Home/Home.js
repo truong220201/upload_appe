@@ -18,7 +18,6 @@ import { Icon } from "react-native-elements";
 import { firebaseApp } from "../../../components/firebaseConfig";
 import { getFirestore } from "firebase/firestore";
 import { collection, getDocs } from "firebase/firestore";
-import HTMLView from "react-native-htmlview";
 import * as Animatable from "react-native-animatable";
 import { styles } from "../Css/CssHome";
 

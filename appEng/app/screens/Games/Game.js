@@ -12,7 +12,6 @@ import {
 import { LinearGradient } from "expo-linear-gradient";
 import data from "../../../assets/documents/topic1/topic.json";
 import { Overlay } from "react-native-elements";
-import { Audio } from "expo-av";
 import { StackActions } from "@react-navigation/native";
 const Store = createContext({});
 
@@ -144,7 +143,7 @@ export default function Game({ route, navigation }) {
       }, 1000);
     return clearTimeout();
   }, [counter]);
-  const sound = new Audio.Sound();
+  // const sound = new Audio.Sound();
 
   const handleAudio = () => {
     try {
@@ -160,12 +159,12 @@ export default function Game({ route, navigation }) {
               return;
             }
             const link = "https://" + obj.audio.substring(2);
-            await sound.loadAsync({
-              uri: link,
-            });
-            const checkLoaded = await sound.getStatusAsync();
+            // await sound.loadAsync({
+            //   uri: link,
+            // });
+            // const checkLoaded = await sound.getStatusAsync();
             if (checkLoaded.isLoaded) {
-              await sound.playAsync();
+              // await sound.playAsync();
             } else {
               console.log("Error in Loading mp3");
             }
@@ -177,14 +176,14 @@ export default function Game({ route, navigation }) {
       console.log(error);
     }
   };
-  React.useEffect(() => {
-    return sound
-      ? () => {
-          console.log("Unloading Sound");
-          sound.unloadAsync();
-        }
-      : undefined;
-  }, [sound]);
+  // React.useEffect(() => {
+  //   return sound
+  //     ? () => {
+  //         console.log("Unloading Sound");
+  //         sound.unloadAsync();
+  //       }
+  //     : undefined;
+  // }, [sound]);
 
   //Vi tri cau
   const hanleNext = async function (rs) {

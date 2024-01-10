@@ -1,0 +1,24 @@
+# ninja log v5
+0	5	0	clean	e6aa354a6d7f2cb9
+1630	1676	1704881689508327974	/Users/sonluu/Documents/GitHub/clone_appe/a/upload_appe/appEng/android/app/build/intermediates/cxx/RelWithDebInfo/1s466b55/obj/x86_64/libappmodules.so	2e3888c90a8c2a00
+1940	1984	1704880042010322042	/Users/sonluu/Documents/GitHub/clone_appe/a/upload_appe/appEng/android/app/build/intermediates/cxx/RelWithDebInfo/1s466b55/obj/x86_64/libreact_codegen_RNCWebViewSpec.so	205475a7a6488960
+1	1940	1704880041964464041	RNCWebViewSpec_autolinked_build/CMakeFiles/react_codegen_RNCWebViewSpec.dir/react/renderer/components/RNCWebViewSpec/Props.cpp.o	d78cbf7aa475aea6
+1	1692	1704880041718587015	RNCWebViewSpec_autolinked_build/CMakeFiles/react_codegen_RNCWebViewSpec.dir/react/renderer/components/RNCWebViewSpec/EventEmitters.cpp.o	168d46e3e5aeabd8
+2	887	1704881688717266820	CMakeFiles/appmodules.dir/OnLoad.cpp.o	54c70191d24f20cc
+1	1100	1704880041127613884	RNCWebViewSpec_autolinked_build/CMakeFiles/react_codegen_RNCWebViewSpec.dir/react/renderer/components/RNCWebViewSpec/ShadowNodes.cpp.o	1a1c8361e1227049
+0	7	0	/Users/sonluu/Documents/GitHub/clone_appe/a/upload_appe/appEng/android/app/.cxx/RelWithDebInfo/1s466b55/x86_64/CMakeFiles/cmake.verify_globs	db61ae1b349d4c03
+1	743	1704880040772751506	RNCWebViewSpec_autolinked_build/CMakeFiles/react_codegen_RNCWebViewSpec.dir/react/renderer/components/RNCWebViewSpec/RNCWebViewSpecJSI-generated.cpp.o	2ff5b1a901ad0e54
+2	1629	1704881689460439068	CMakeFiles/appmodules.dir/Users/sonluu/Documents/GitHub/clone_appe/a/upload_appe/appEng/android/app/build/generated/rncli/src/main/jni/rncli.cpp.o	6145d9367eee2107
+2	730	1704880040754502163	RNCWebViewSpec_autolinked_build/CMakeFiles/react_codegen_RNCWebViewSpec.dir/react/renderer/components/RNCWebViewSpec/States.cpp.o	563a87ba9f4385e0
+1	1143	1704880041171167983	RNCWebViewSpec_autolinked_build/CMakeFiles/react_codegen_RNCWebViewSpec.dir/RNCWebViewSpec-generated.cpp.o	209037ce42bf2a54
+0	6	0	/Users/sonluu/Documents/GitHub/clone_appe/a/upload_appe/appEng/android/app/.cxx/RelWithDebInfo/1s466b55/x86_64/CMakeFiles/cmake.verify_globs	db61ae1b349d4c03
+2	771	1704882661981277784	RNCWebViewSpec_autolinked_build/CMakeFiles/react_codegen_RNCWebViewSpec.dir/react/renderer/components/RNCWebViewSpec/States.cpp.o	563a87ba9f4385e0
+2	792	1704882662003529535	RNCWebViewSpec_autolinked_build/CMakeFiles/react_codegen_RNCWebViewSpec.dir/react/renderer/components/RNCWebViewSpec/RNCWebViewSpecJSI-generated.cpp.o	2ff5b1a901ad0e54
+1	1106	1704882662316776843	RNCWebViewSpec_autolinked_build/CMakeFiles/react_codegen_RNCWebViewSpec.dir/RNCWebViewSpec-generated.cpp.o	209037ce42bf2a54
+3	1216	1704882662426587183	RNCWebViewSpec_autolinked_build/CMakeFiles/react_codegen_RNCWebViewSpec.dir/react/renderer/components/RNCWebViewSpec/ShadowNodes.cpp.o	1a1c8361e1227049
+1	1325	1704882662533862522	CMakeFiles/appmodules.dir/OnLoad.cpp.o	54c70191d24f20cc
+2	1803	1704882663011175881	RNCWebViewSpec_autolinked_build/CMakeFiles/react_codegen_RNCWebViewSpec.dir/react/renderer/components/RNCWebViewSpec/EventEmitters.cpp.o	168d46e3e5aeabd8
+2	1915	1704882663122497721	RNCWebViewSpec_autolinked_build/CMakeFiles/react_codegen_RNCWebViewSpec.dir/react/renderer/components/RNCWebViewSpec/Props.cpp.o	d78cbf7aa475aea6
+1915	1961	1704882663169097015	/Users/sonluu/Documents/GitHub/clone_appe/a/upload_appe/appEng/android/app/build/intermediates/cxx/RelWithDebInfo/1s466b55/obj/x86_64/libreact_codegen_RNCWebViewSpec.so	205475a7a6488960
+1	2172	1704882663379130443	CMakeFiles/appmodules.dir/Users/sonluu/Documents/GitHub/clone_appe/a/upload_appe/appEng/android/app/build/generated/rncli/src/main/jni/rncli.cpp.o	6145d9367eee2107
+2172	2212	1704882663421896904	/Users/sonluu/Documents/GitHub/clone_appe/a/upload_appe/appEng/android/app/build/intermediates/cxx/RelWithDebInfo/1s466b55/obj/x86_64/libappmodules.so	2e3888c90a8c2a00

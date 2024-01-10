@@ -81,7 +81,7 @@ android {
 
     compileSdkVersion rootProject.ext.compileSdkVersion
 
-    namespace "com.appe"
+    namespace "com.johncy.myapp_18"
     defaultConfig {
         applicationId 'com.johncy.myapp_18'
         minSdkVersion rootProject.ext.minSdkVersion

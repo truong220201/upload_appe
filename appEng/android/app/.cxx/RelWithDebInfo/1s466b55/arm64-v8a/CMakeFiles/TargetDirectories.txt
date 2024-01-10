@@ -1,0 +1,6 @@
+/Users/sonluu/Documents/GitHub/clone_appe/a/upload_appe/appEng/android/app/.cxx/RelWithDebInfo/1s466b55/arm64-v8a/CMakeFiles/appmodules.dir
+/Users/sonluu/Documents/GitHub/clone_appe/a/upload_appe/appEng/android/app/.cxx/RelWithDebInfo/1s466b55/arm64-v8a/CMakeFiles/edit_cache.dir
+/Users/sonluu/Documents/GitHub/clone_appe/a/upload_appe/appEng/android/app/.cxx/RelWithDebInfo/1s466b55/arm64-v8a/CMakeFiles/rebuild_cache.dir
+/Users/sonluu/Documents/GitHub/clone_appe/a/upload_appe/appEng/android/app/.cxx/RelWithDebInfo/1s466b55/arm64-v8a/RNCWebViewSpec_autolinked_build/CMakeFiles/react_codegen_RNCWebViewSpec.dir
+/Users/sonluu/Documents/GitHub/clone_appe/a/upload_appe/appEng/android/app/.cxx/RelWithDebInfo/1s466b55/arm64-v8a/RNCWebViewSpec_autolinked_build/CMakeFiles/edit_cache.dir
+/Users/sonluu/Documents/GitHub/clone_appe/a/upload_appe/appEng/android/app/.cxx/RelWithDebInfo/1s466b55/arm64-v8a/RNCWebViewSpec_autolinked_build/CMakeFiles/rebuild_cache.dir
