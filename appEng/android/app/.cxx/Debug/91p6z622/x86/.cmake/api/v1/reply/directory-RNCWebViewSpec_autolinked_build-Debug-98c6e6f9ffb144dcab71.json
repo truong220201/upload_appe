@@ -1,0 +1,14 @@
+{
+	"backtraceGraph" : 
+	{
+		"commands" : [],
+		"files" : [],
+		"nodes" : []
+	},
+	"installers" : [],
+	"paths" : 
+	{
+		"build" : "RNCWebViewSpec_autolinked_build",
+		"source" : "/Users/sonluu/Documents/GitHub/clone_appe/a/upload_appe/upload_appe/appEng/node_modules/react-native-webview/android/build/generated/source/codegen/jni"
+	}
+}

@@ -142,6 +142,7 @@ export default class TestScreen extends React.Component {
       this.state.hideNext = "flex";
       this.state.hideBack = "flex";
     }
+    console.log("itemK=" + this.state.itemK);
     return (
       <SafeAreaView style={styles.container}>
         <Animatable.Text animation={duoilentren} style={{ width: windowWidth }}>
@@ -561,12 +562,19 @@ export default class TestScreen extends React.Component {
         ans: this.state.trueAns[inum - 1],
         isLoading: false,
       });
-      console.log("itemK :" + this.state.itemK);
     } else {
       Alert.alert("Thông báo", "Phần này chưa có đủ bài tập...", [
         {
           text: "Ok",
-          onPress: () => this.goto(this.state.itemQ),
+          onPress: () =>
+            this.nvt.navigate("huongdan", {
+              id: this.id,
+              ten: this.ten,
+              uid: this.uid,
+              email: this.email,
+              socau: 10,
+              tg: 15,
+            }),
           style: "cancel",
         },
       ]);
@@ -670,9 +678,11 @@ export default class TestScreen extends React.Component {
 
   //tinh diem sau khi nop bai
   dvt() {
-    console.log("this.state.itemQ", this.state.itemQ);
-    for (var n = 0; n < this.state.socau.length; n++) {
-      for (var m = 0; m < this.state.socau.length; m++) {
+    console.log("so cau: ", this.state.socau.length);
+    console.log("answ: ", this.state.answ);
+    console.log("trueAns: ", this.trueAns);
+    for (var n = 0; n < 10; n++) {
+      for (var m = 0; m < 10; m++) {
         if (this.state.answ[n] == this.state.trueAns[m]) {
           this.diems++;
         } else {
@@ -680,6 +690,7 @@ export default class TestScreen extends React.Component {
         }
       }
     }
+    console.log("diem : ", this.diems);
   }
 
   //luu diem len firestore
@@ -693,7 +704,7 @@ export default class TestScreen extends React.Component {
     if (y == true) {
       this.nvt.navigate("kq", {
         diem: this.diems,
-        item: this.state.item,
+        item: this.state.itemK,
         itemK: this.state.itemK,
         ds: this.state.o,
         bailam: this.state.answ,
@@ -725,7 +736,7 @@ export default class TestScreen extends React.Component {
               this.dvt();
               this.nvt.navigate("kq", {
                 diem: this.diems,
-                item: this.state.item,
+                item: this.state.itemK,
                 itemK: this.state.itemK,
                 ds: this.state.o,
                 bailam: this.state.answ,

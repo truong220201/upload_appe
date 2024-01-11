@@ -114,22 +114,23 @@ export default class Huongdan extends React.Component {
           this.i[n] == `${doc.data().Id_cate_mtct}` &&
           `${doc.data().Don_Kep}` != 1
         ) {
-          console.log(
-            "---------- don_kep: ",
-            `${doc.data().Don_Kep}`.toString(),
-            `${doc.id}`.toString()
-          );
+          // console.log(
+          //   "---------- don_kep: ",
+          //   `${doc.data().Don_Kep}`.toString(),
+          //   `${doc.id}`.toString()
+          // );
           this.itemK = [...this.itemK, `${doc.id}`];
           this.nameqs = [...this.nameqs, `${doc.data().Content_Question}`];
-          (this.opt0 = [...this.opt0, `${doc.data().Option_ans[0]}`]),
-            (this.opt1 = [...this.opt1, `${doc.data().Option_ans[1]}`]),
-            (this.opt2 = [...this.opt2, `${doc.data().Option_ans[2]}`]),
-            (this.opt3 = [...this.opt3, `${doc.data().Option_ans[3]}`]),
-            (this.trueAns = [...this.trueAns, `${doc.data().True_ans}`]),
-            (this.isLoading = false);
+          this.opt0 = [...this.opt0, `${doc.data().Option_ans[0]}`];
+          this.opt1 = [...this.opt1, `${doc.data().Option_ans[1]}`];
+          this.opt2 = [...this.opt2, `${doc.data().Option_ans[2]}`];
+          this.opt3 = [...this.opt3, `${doc.data().Option_ans[3]}`];
+          this.trueAns = [...this.trueAns, `${doc.data().True_ans}`];
+          this.isLoading = false;
         }
       });
     });
+    console.log("render", this.trueAns);
     //this.shuffle(this.i)
   }
 
@@ -166,7 +167,6 @@ export default class Huongdan extends React.Component {
     const windowHeight = Dimensions.get("window").height;
     const { navigation, route } = this.props;
     const { loaiId, ten, id, name, uid, email } = route.params;
-    console.log("render", this.opt0);
 
     this.uid = uid;
     this.email = email;

@@ -1,0 +1,41 @@
+diff --git a/node_modules/react-native-safe-area-context/common/cpp/react/renderer/components/safeareacontext/RNCSafeAreaViewComponentDescriptor.h b/node_modules/react-native-safe-area-context/common/cpp/react/renderer/components/safeareacontext/RNCSafeAreaViewComponentDescriptor.h
+index a11321d..1ac0aaa 100644
+--- a/node_modules/react-native-safe-area-context/common/cpp/react/renderer/components/safeareacontext/RNCSafeAreaViewComponentDescriptor.h
++++ b/node_modules/react-native-safe-area-context/common/cpp/react/renderer/components/safeareacontext/RNCSafeAreaViewComponentDescriptor.h
+@@ -12,11 +12,10 @@ namespace react {
+ class RNCSafeAreaViewComponentDescriptor final
+     : public ConcreteComponentDescriptor<RNCSafeAreaViewShadowNode> {
+   using ConcreteComponentDescriptor::ConcreteComponentDescriptor;
+-  void adopt(ShadowNode &shadowNode) const override {
+-    auto &concreteShadowNode =
+-        static_cast<RNCSafeAreaViewShadowNode &>(shadowNode);
++   void adopt(ShadowNode& shadowNode) const override {
++    auto& concreteShadowNode =
++        static_cast<RNCSafeAreaViewShadowNode&>(shadowNode);
+     concreteShadowNode.adjustLayoutWithState();
+-
+     ConcreteComponentDescriptor::adopt(shadowNode);
+   }
+ };
+diff --git a/node_modules/react-native-safe-area-context/common/cpp/react/renderer/components/safeareacontext/RNCSafeAreaViewShadowNode.cpp b/node_modules/react-native-safe-area-context/common/cpp/react/renderer/components/safeareacontext/RNCSafeAreaViewShadowNode.cpp
+index b4bf449..6c8eb57 100644
+--- a/node_modules/react-native-safe-area-context/common/cpp/react/renderer/components/safeareacontext/RNCSafeAreaViewShadowNode.cpp
++++ b/node_modules/react-native-safe-area-context/common/cpp/react/renderer/components/safeareacontext/RNCSafeAreaViewShadowNode.cpp
+@@ -11,7 +11,7 @@ namespace react {
+ extern const char RNCSafeAreaViewComponentName[] = "RNCSafeAreaView";
+ 
+ inline YGValue
+-valueFromEdges(yoga::Style::Edges edges, YGEdge edge, YGEdge axis) {
++inline YGValue valueFromEdges(yoga::Style::Edges edges, YGEdge edge, YGEdge axis) {
+   YGValue edgeValue = edges[edge];
+   if (edgeValue.unit != YGUnitUndefined) {
+     return edgeValue;
+@@ -66,7 +66,7 @@ void RNCSafeAreaViewShadowNode::adjustLayoutWithState() {
+         valueFromEdges(props.yogaStyle.margin(), YGEdgeRight, YGEdgeHorizontal);
+   }
+ 
+-  top = yoga::CompactValue::ofMaybe<YGUnitPoint>(getEdgeValue(
++   top = yoga::CompactValue::ofMaybe<YGUnitPoint>(getEdgeValue(
+       edges.top,
+       stateData.insets.top,
+       (top.unit == YGUnitPoint ? top.value : 0)));

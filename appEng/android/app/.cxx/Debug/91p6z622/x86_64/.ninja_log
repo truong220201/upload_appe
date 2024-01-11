@@ -1,0 +1,27 @@
+# ninja log v5
+2713	2826	1704960850311981818	/Users/sonluu/Documents/GitHub/clone_appe/a/upload_appe/upload_appe/appEng/android/app/build/intermediates/cxx/Debug/91p6z622/obj/x86_64/libreact_codegen_RNCWebViewSpec.so	78ab04a0915f7814
+14	1304	1704960848797715527	RNCWebViewSpec_autolinked_build/CMakeFiles/react_codegen_RNCWebViewSpec.dir/react/renderer/components/RNCWebViewSpec/RNCWebViewSpecJSI-generated.cpp.o	8535ff2c7609068f
+14	1562	1704960849064220761	RNCWebViewSpec_autolinked_build/CMakeFiles/react_codegen_RNCWebViewSpec.dir/react/renderer/components/RNCWebViewSpec/States.cpp.o	d363a9f847045fe8
+0	13	0	/Users/sonluu/Documents/GitHub/clone_appe/a/upload_appe/upload_appe/appEng/android/app/.cxx/Debug/91p6z622/x86_64/CMakeFiles/cmake.verify_globs	256048449ec23c79
+13	2713	1704960850212860374	RNCWebViewSpec_autolinked_build/CMakeFiles/react_codegen_RNCWebViewSpec.dir/react/renderer/components/RNCWebViewSpec/EventEmitters.cpp.o	c77fceef583815e0
+9	1971	1704960849470478076	RNCWebViewSpec_autolinked_build/CMakeFiles/react_codegen_RNCWebViewSpec.dir/RNCWebViewSpec-generated.cpp.o	58eae0fe3e51b87f
+13	2222	1704960849727688477	RNCWebViewSpec_autolinked_build/CMakeFiles/react_codegen_RNCWebViewSpec.dir/react/renderer/components/RNCWebViewSpec/ShadowNodes.cpp.o	8e541d5215e11a54
+4	2061	1704961666364597163	CMakeFiles/appmodules.dir/OnLoad.cpp.o	d9c7e01432c492bf
+2728	2862	1704961667157537842	/Users/sonluu/Documents/GitHub/clone_appe/a/upload_appe/upload_appe/appEng/android/app/build/intermediates/cxx/Debug/91p6z622/obj/x86_64/libappmodules.so	555388cef3ab3908
+8	74	1704962165279469215	build.ninja	6929dd73ad596f1d
+0	6	0	clean	e6aa354a6d7f2cb9
+4	2728	1704961667019563247	CMakeFiles/appmodules.dir/Users/sonluu/Documents/GitHub/clone_appe/a/upload_appe/upload_appe/appEng/android/app/build/generated/rncli/src/main/jni/rncli.cpp.o	3516e4b27e73830f
+13	2663	1704960850159726601	RNCWebViewSpec_autolinked_build/CMakeFiles/react_codegen_RNCWebViewSpec.dir/react/renderer/components/RNCWebViewSpec/Props.cpp.o	28107fbcb6852f6
+0	7	0	/Users/sonluu/Documents/GitHub/clone_appe/a/upload_appe/upload_appe/appEng/android/app/.cxx/Debug/91p6z622/x86_64/CMakeFiles/cmake.verify_globs	256048449ec23c79
+4	741	1704962166087355218	rnscreens_autolinked_build/CMakeFiles/react_codegen_rnscreens.dir/Users/sonluu/Documents/GitHub/clone_appe/a/upload_appe/upload_appe/appEng/node_modules/react-native-screens/android/build/generated/source/codegen/jni/react/renderer/components/rnscreens/rnscreensJSI-generated.cpp.o	e275e93ac609d843
+3	1164	1704962166515841583	rnscreens_autolinked_build/CMakeFiles/react_codegen_rnscreens.dir/Users/sonluu/Documents/GitHub/clone_appe/a/upload_appe/upload_appe/appEng/node_modules/react-native-screens/android/build/generated/source/codegen/jni/react/renderer/components/rnscreens/States.cpp.o	9dec249f798bb4f3
+2	1437	1704962166789236588	rnscreens_autolinked_build/CMakeFiles/react_codegen_rnscreens.dir/Users/sonluu/Documents/GitHub/clone_appe/a/upload_appe/upload_appe/appEng/node_modules/react-native-screens/common/cpp/react/renderer/components/rnscreens/RNSScreenState.cpp.o	b7edb54dbd1c82da
+3	1563	1704962166918451888	rnscreens_autolinked_build/CMakeFiles/react_codegen_rnscreens.dir/Users/sonluu/Documents/GitHub/clone_appe/a/upload_appe/upload_appe/appEng/node_modules/react-native-screens/android/build/generated/source/codegen/jni/react/renderer/components/rnscreens/ShadowNodes.cpp.o	aaee849c06481101
+2	1568	1704962166927451474	rnscreens_autolinked_build/CMakeFiles/react_codegen_rnscreens.dir/Users/sonluu/Documents/GitHub/clone_appe/a/upload_appe/upload_appe/appEng/node_modules/react-native-screens/common/cpp/react/renderer/components/rnscreens/RNSScreenShadowNode.cpp.o	59cd308690bdc4bc
+2	1678	1704962167037033408	rnscreens_autolinked_build/CMakeFiles/react_codegen_rnscreens.dir/rnscreens.cpp.o	7517d6a9b6380fb1
+1	1765	1704962167118107139	CMakeFiles/appmodules.dir/OnLoad.cpp.o	7e33f63af082d5e9
+2	1797	1704962167151996752	rnscreens_autolinked_build/CMakeFiles/react_codegen_rnscreens.dir/Users/sonluu/Documents/GitHub/clone_appe/a/upload_appe/upload_appe/appEng/node_modules/react-native-screens/android/build/generated/source/codegen/jni/react/renderer/components/rnscreens/Props.cpp.o	f912793dcaabc76b
+2	2003	1704962167357532658	rnscreens_autolinked_build/CMakeFiles/react_codegen_rnscreens.dir/Users/sonluu/Documents/GitHub/clone_appe/a/upload_appe/upload_appe/appEng/node_modules/react-native-screens/android/build/generated/source/codegen/jni/react/renderer/components/rnscreens/EventEmitters.cpp.o	884d2ea1c02064e9
+2003	2065	1704962167414419439	/Users/sonluu/Documents/GitHub/clone_appe/a/upload_appe/upload_appe/appEng/android/app/build/intermediates/cxx/Debug/91p6z622/obj/x86_64/libreact_codegen_rnscreens.so	931ada804eb9826e
+1	4386	1704962169708382570	CMakeFiles/appmodules.dir/Users/sonluu/Documents/GitHub/clone_appe/a/upload_appe/upload_appe/appEng/android/app/build/generated/rncli/src/main/jni/rncli.cpp.o	1d0f04d2e6195978
+4386	4462	1704962169803617716	/Users/sonluu/Documents/GitHub/clone_appe/a/upload_appe/upload_appe/appEng/android/app/build/intermediates/cxx/Debug/91p6z622/obj/x86_64/libappmodules.so	fb9e767155540045

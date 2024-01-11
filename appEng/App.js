@@ -44,7 +44,7 @@ import Game from "./app/screens/Games/Game";
 import Score from "./app/screens/Games/score/Score";
 import Learn from "./app/screens/Learn/learn";
 import Bxh from "./app/screens/bxh/bxh";
-import "expo-dev-client";
+// import "expo-dev-client";
 import {
   StripeProvider,
   usePaymentSheet,
