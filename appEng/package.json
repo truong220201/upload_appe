@@ -36,6 +36,7 @@
     "react-native-checkbox": "^2.0.0",
     "react-native-countdown-component": "^2.7.1",
     "react-native-elements": "^3.4.2",
+    "react-native-google-mobile-ads": "^12.10.0",
     "react-native-htmlview": "^0.16.0",
     "react-native-keychain": "^8.0.0",
     "react-native-paper": "^4.11.2",

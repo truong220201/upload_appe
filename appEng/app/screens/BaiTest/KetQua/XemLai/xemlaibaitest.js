@@ -102,27 +102,25 @@ export default class Xemlai extends React.Component {
   }
 
   check(inum) {
-    if (this.state.itemQ.length >= inum) {
-      [...Array(this.state.itemQ.length)].map((o, n) => {
-        if (this.state.itemK[inum - 1] == this.state.item[n]) {
-          //console.log('ok ',this.state.nameqs);
-          this.setState({
-            //
-            itemQ: inum,
-            q: this.state.qt[inum - 1],
-            o: [
-              this.state.opt0[n],
-              this.state.opt1[n],
-              this.state.opt2[n],
-              this.state.opt3[n],
-            ],
-            dapan: this.state.da[n],
-            //answ:[...this.state.answ[inum-1]=this.state.trueAns[inum-1]],
-            //opt0:[...this.state.opt0,`${doc.data().Option_ans[0]}`],
-          });
-          //console.log(this.state.dapan);
-          //console.log('inum:',inum);
-        }
+    console.log("----------inum: ", inum);
+    if (this.state.itemK.length >= inum) {
+      // [...Array(this.state.itemQ.length)].map((o, n) => {
+      //   if (this.state.itemK[inum - 1] == this.state.item[n]) {
+      console.log("dap an: ", this.state.da[inum - 1]);
+      this.setState({
+        //
+        itemQ: inum,
+        q: this.state.qt[inum - 1],
+        o: [
+          this.state.opt0[inum - 1],
+          this.state.opt1[inum - 1],
+          this.state.opt2[inum - 1],
+          this.state.opt3[inum - 1],
+        ],
+        dapan: this.state.da[inum - 1],
+
+        //answ:[...this.state.answ[inum-1]=this.state.trueAns[inum-1]],
+        //opt0:[...this.state.opt0,`${doc.data().Option_ans[0]}`],
       });
       this.dvt();
     } else {
@@ -136,30 +134,31 @@ export default class Xemlai extends React.Component {
     }
   }
   async listenForItems(inum) {
-    console.log("-----ok itemK ket qua:  ", this.state.itemK);
-
+    console.log("-----ok opt0 ket qua:  ", this.state.opt0);
+    var n = inum - 1;
     if (this.state.itemK.length >= inum) {
-      [...Array(this.state.itemK.length)].map((o, n) => {
-        if (this.state.itemK[inum - 1] == this.state.item[n]) {
-          //console.log('ok ',this.state.nameqs);
-          this.setState({
-            //
-            itemQ: inum,
-            q: this.state.qt[inum - 1],
-            o: [
-              this.state.opt0[n],
-              this.state.opt1[n],
-              this.state.opt2[n],
-              this.state.opt3[n],
-            ],
-            dapan: this.state.da[n],
-            //answ:[...this.state.answ[inum-1]=this.state.trueAns[inum-1]],
-            //opt0:[...this.state.opt0,`${doc.data().Option_ans[0]}`],
-          });
-          //console.log(this.state.dapan);
-          console.log("inum:", inum);
-        }
+      // [...Array(this.state.itemK.length)].map((o, n) => {
+      //   if (this.state.itemK[inum - 1] == this.state.item[n]) {
+      console.log("----opt0: ", this.state.opt0);
+      this.setState({
+        //
+        itemQ: inum,
+        q: this.state.qt[inum - 1],
+        o: [
+          this.state.opt0[n],
+          this.state.opt1[n],
+          this.state.opt2[n],
+          this.state.opt3[n],
+        ],
+        dapan: this.state.da[n],
+        //answ:[...this.state.answ[inum-1]=this.state.trueAns[inum-1]],
+        //opt0:[...this.state.opt0,`${doc.data().Option_ans[0]}`],
       });
+      //console.log(this.state.dapan);
+      console.log("inum:", inum);
+      //   }
+      // }
+      // );
       this.dvt();
       console.log(this.state.colorw);
     } else {
@@ -258,11 +257,12 @@ export default class Xemlai extends React.Component {
     const { route, navigation } = this.props;
     this.nvt = navigation;
     const { bailam, socau, uid, email } = route.params;
+    console.log("------bailam:" + bailam);
     var l = this.state.itemQ;
     const question = this.state.q;
-    console.log("----------item::::", this.state.item);
-    console.log("-----------itemQ::::", this.state.itemQ);
-    console.log("------------itemK::::", this.state.itemK);
+    // console.log("----------item::::", this.state.item);
+    // console.log("-----------itemQ::::", this.state.itemQ);
+    // console.log("------------itemK::::", this.state.itemK);
     if (l == 1) {
       this.state.hideHome = "none";
       this.state.hideBack = "none";

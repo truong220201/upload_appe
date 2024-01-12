@@ -19,7 +19,7 @@ import { LinearGradient } from "expo-linear-gradient";
 import { doc, setDoc } from "firebase/firestore";
 
 import HTMLView from "react-native-htmlview";
-import { WebView } from "react-native-webview";
+// import { WebView } from "react-native-webview";
 
 //css
 import { styles } from "../../Css/CssBaiTest";
@@ -121,7 +121,7 @@ export default class TestScreen extends React.Component {
     const windowWidth = Dimensions.get("window").width;
     const windowHeight = Dimensions.get("window").height;
     var l = this.state.itemQ;
-    const questiona = this.state.q;
+    const questiona = this.state.q ?? "";
 
     const duoilentren = {
       from: {
@@ -142,7 +142,7 @@ export default class TestScreen extends React.Component {
       this.state.hideNext = "flex";
       this.state.hideBack = "flex";
     }
-    console.log("itemK=" + this.state.itemK);
+    // console.log("itemK=" + this.state.itemK);
     return (
       <SafeAreaView style={styles.container}>
         <Animatable.Text animation={duoilentren} style={{ width: windowWidth }}>
@@ -369,9 +369,19 @@ export default class TestScreen extends React.Component {
                                     backgroundColor: "#ffffff",
                                   }}
                                 >
-                                  <WebView
+                                  <HTMLView
+                                    stylesheet={{
+                                      width: "280%",
+                                      height: "280%",
+                                      backgroundColor: "#ffffff00",
+                                      borderWidth: 0,
+                                      color: "red",
+                                    }}
+                                    value={option}
+                                  />
+                                  {/* <WebView
                                     originWhitelist={["*"]}
-                                    source={{ html: option }}
+                                    source={{ html: option ?? "" }}
                                     style={{
                                       width: "280%",
                                       height: "280%",
@@ -379,7 +389,7 @@ export default class TestScreen extends React.Component {
                                       borderWidth: 0,
                                       color: "red",
                                     }}
-                                  />
+                                  /> */}
                                 </View>
                               </TouchableOpacity>
                             </LinearGradient>
@@ -410,10 +420,14 @@ export default class TestScreen extends React.Component {
                                   backgroundColor: "#ffffff00",
                                 }}
                               >
-                                <WebView
+                                {/* <WebView
                                   originWhitelist={["*"]}
                                   source={{ html: option }}
                                   style={{ width: "280%", height: "280%" }}
+                                /> */}
+                                <HTMLView
+                                  stylesheet={{ width: "280%", height: "280%" }}
+                                  value={option}
                                 />
                               </View>
                             </TouchableOpacity>
@@ -481,8 +495,6 @@ export default class TestScreen extends React.Component {
   }
   //Thay doi bai tap
   check(inum) {
-    console.log("bai : ", inum);
-    console.log("length: ", this.state.item.length);
     //console.log('inum: ',inum)
     if (this.state.itemQ.length >= inum) {
       this.listenForItems(inum);
@@ -515,7 +527,7 @@ export default class TestScreen extends React.Component {
   //dat va lay du lieu user
   async setUser(email, diem, uid) {
     const db = getFirestore(firebaseApp);
-    console.log("uiddddddd:", uid);
+    // console.log("uiddddddd:", uid);
     await setDoc(doc(db, "User", uid), {
       Email: email,
       Diem: diem,
@@ -530,8 +542,8 @@ export default class TestScreen extends React.Component {
     querySnapshotUser.forEach((doc) => {
       //console.log(`name qs : ${doc.data().Id_cate_mtct}`);
 
-      console.log("uida:", uid);
-      console.log("user: ", `${doc.data().Uid}`);
+      // console.log("uida:", uid);
+      // console.log("user: ", `${doc.data().Uid}`);
       if (`${doc.data().Uid}` == uid) {
         if (`${doc.data().Uid}` == 0) {
           this.diems = 0;
@@ -678,9 +690,9 @@ export default class TestScreen extends React.Component {
 
   //tinh diem sau khi nop bai
   dvt() {
-    console.log("so cau: ", this.state.socau.length);
-    console.log("answ: ", this.state.answ);
-    console.log("trueAns: ", this.trueAns);
+    // console.log("so cau: ", this.state.socau.length);
+    // console.log("answ: ", this.state.answ);
+    // console.log("trueAns: ", this.trueAns);
     for (var n = 0; n < 10; n++) {
       for (var m = 0; m < 10; m++) {
         if (this.state.answ[n] == this.state.trueAns[m]) {
@@ -774,10 +786,17 @@ export default class TestScreen extends React.Component {
     }
   }
   componentWillUnmount() {
+    if (this.cleanupFunction) {
+      this.cleanupFunction();
+    }
     clearInterval(this.interval);
   }
 
   componentDidMount() {
+    this.cleanupFunction = () => {
+      console.log("Cleanup function executed");
+      // Thực hiện công việc dọn dẹp khi component bị unmount
+    };
     this.listenForItems(this.num);
 
     this.interval = setInterval(
@@ -790,10 +809,6 @@ export default class TestScreen extends React.Component {
     if (this.state.timer === 1) {
       clearInterval(this.interval);
     }
-  }
-
-  componentWillUnmount() {
-    clearInterval(this.interval);
   }
 }
 

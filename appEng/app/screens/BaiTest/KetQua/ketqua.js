@@ -1,4 +1,5 @@
 import { RadioButtons, SegmentedControls } from "react-native-radio-buttons";
+import React, { useState, useEffect } from "react";
 import {
   Image,
   Dimensions,
@@ -16,7 +17,7 @@ import {
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { LinearGradient } from "expo-linear-gradient";
 
-import React from "react";
+// import React from "react";
 
 const Stack = createNativeStackNavigator();
 export default class Ketqua extends React.Component {
@@ -64,6 +65,7 @@ export default class Ketqua extends React.Component {
       email,
     } = route.params;
     console.log("baiiiii tappppp da lam:", diem);
+
     return (
       <ImageBackground
         style={styles.container}
