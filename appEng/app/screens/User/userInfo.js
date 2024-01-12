@@ -49,7 +49,7 @@ class ProfileScreen extends React.Component {
     const querySnapshot = await getDocs(collection(db, "User"));
     querySnapshot.forEach((doc) => {
       // var listTemp = this.listUser;
-      var name = `${doc.data().Name}`.toString();
+      var name = `${doc.data().Email}`.toString();
       var score = `${doc.data().Diem}`.toString();
       this.listUsername.push(name);
       this.listscore.push(score);

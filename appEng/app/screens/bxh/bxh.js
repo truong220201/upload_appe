@@ -9,12 +9,14 @@ import {
   SafeAreaView,
   Dimensions,
   FlatList,
+  ImageBackground,
   Alert,
 } from "react-native";
 import { firebaseApp } from "../../../components/firebase";
 import { getFirestore } from "firebase/firestore";
 import data from "../../../assets/documents/topic1/learn.json";
 import { WebView } from "react-native-webview";
+import { ListItem, Icon } from "react-native-elements";
 class Bxh extends React.Component {
   constructor(props) {
     super(props);
@@ -83,9 +85,24 @@ class Bxh extends React.Component {
     this.getData();
     for (let i = 1; i <= this.listScore.length; i++) {
       Elements.push(
-        <View key={i} style={styles.item}>
-          <Text style={styles.name}>{this.listUser[i]}</Text>
-          <Text style={styles.score}>Điểm: {this.listScore[i]}</Text>
+        <View style={{ flexDirection: "row", alignItems: "center" }}>
+          <View
+            style={{
+              borderRadius: 100,
+              borderColor: "white",
+              borderWidth: 1,
+              width: 50,
+              height: 50,
+              paddingTop: 10,
+            }}
+          >
+            <Icon name={"user"} type="font-awesome" color={"#fff"} />
+          </View>
+
+          <View key={i} style={styles.item}>
+            <Text style={styles.name}>{this.listUser[i]}</Text>
+            <Text style={styles.score}>Điểm: {this.listScore[i]}</Text>
+          </View>
         </View>
       );
     }
@@ -119,10 +136,13 @@ class Bxh extends React.Component {
     );
   }
   renderItem = ({ item }) => (
-    <View style={styles.item}>
-      <Text style={styles.name}>{item.name}</Text>
-      <Text style={styles.score}>Điểm: {item.score}</Text>
-    </View>
+    <ListItem key={index} bottomDivider>
+      <Icon name={"user"} type="font-awesome" />
+      <ListItem.Content>
+        <ListItem.Title>{item.name}</ListItem.Title>
+        <ListItem.Subtitle>{`${item.score} điểm`}</ListItem.Subtitle>
+      </ListItem.Content>
+    </ListItem>
   );
 }
 
@@ -131,7 +151,8 @@ export default Bxh;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
+    // backgroundColor: "#fff",
+    backgroundColor: "#FFA500",
     // padding: 100,
   },
   item: {
@@ -145,9 +166,11 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: "bold",
     marginBottom: 5,
+    color: "#fff",
   },
   score: {
     fontSize: 16,
+    color: "#fff",
   },
   userImg: {
     height: 150,

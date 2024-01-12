@@ -44,6 +44,8 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
+  include("/Users/sonluu/Documents/GitHub/clone_appe/a/upload_appe/upload_appe/appEng/android/app/.cxx/Debug/91p6z622/x86_64/RNGoogleMobileAdsSpec_autolinked_build/cmake_install.cmake")
+  include("/Users/sonluu/Documents/GitHub/clone_appe/a/upload_appe/upload_appe/appEng/android/app/.cxx/Debug/91p6z622/x86_64/safeareacontext_autolinked_build/cmake_install.cmake")
   include("/Users/sonluu/Documents/GitHub/clone_appe/a/upload_appe/upload_appe/appEng/android/app/.cxx/Debug/91p6z622/x86_64/rnscreens_autolinked_build/cmake_install.cmake")
   include("/Users/sonluu/Documents/GitHub/clone_appe/a/upload_appe/upload_appe/appEng/android/app/.cxx/Debug/91p6z622/x86_64/RNCWebViewSpec_autolinked_build/cmake_install.cmake")
 

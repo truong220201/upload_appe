@@ -130,8 +130,18 @@ export default class Huongdan extends React.Component {
         }
       });
     });
-    console.log("render", this.trueAns);
-    //this.shuffle(this.i)
+    // console.log("render", this.trueAns);
+
+    this.shuffle(
+      this.itemK,
+      this.nameqs,
+      this.opt0,
+      this.opt1,
+      this.opt2,
+      this.opt3,
+      this.trueAns
+    );
+    console.log("random done");
   }
 
   componentDidMount() {
@@ -141,7 +151,7 @@ export default class Huongdan extends React.Component {
     this.listenForItemsQS();
   }
   // random cau hoi/ tra loi
-  shuffle(arraya) {
+  shuffle(arraya, arrayb, arrayc, arrayd, arraye, arrayf, arrayg) {
     let currentIndex = arraya.length,
       randomIndex;
 
@@ -156,6 +166,30 @@ export default class Huongdan extends React.Component {
       [arraya[currentIndex], arraya[randomIndex]] = [
         arraya[randomIndex],
         arraya[currentIndex],
+      ];
+      [arrayb[currentIndex], arrayb[randomIndex]] = [
+        arrayb[randomIndex],
+        arrayb[currentIndex],
+      ];
+      [arrayc[currentIndex], arrayc[randomIndex]] = [
+        arrayc[randomIndex],
+        arrayc[currentIndex],
+      ];
+      [arrayd[currentIndex], arrayd[randomIndex]] = [
+        arrayd[randomIndex],
+        arrayd[currentIndex],
+      ];
+      [arraye[currentIndex], arraye[randomIndex]] = [
+        arraye[randomIndex],
+        arraye[currentIndex],
+      ];
+      [arrayf[currentIndex], arrayf[randomIndex]] = [
+        arrayf[randomIndex],
+        arrayf[currentIndex],
+      ];
+      [arrayg[currentIndex], arrayg[randomIndex]] = [
+        arrayg[randomIndex],
+        arrayg[currentIndex],
       ];
     }
 

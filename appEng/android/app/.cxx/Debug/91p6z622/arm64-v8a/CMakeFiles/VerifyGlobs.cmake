@@ -12,6 +12,30 @@ if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
   file(TOUCH_NOCREATE "/Users/sonluu/Documents/GitHub/clone_appe/a/upload_appe/upload_appe/appEng/android/app/.cxx/Debug/91p6z622/arm64-v8a/CMakeFiles/cmake.verify_globs")
 endif()
 
+# react_codegen_SRCS at /Users/sonluu/Documents/GitHub/clone_appe/a/upload_appe/upload_appe/appEng/node_modules/react-native-google-mobile-ads/android/build/generated/source/codegen/jni/CMakeLists.txt:9 (file)
+file(GLOB NEW_GLOB LIST_DIRECTORIES true "/Users/sonluu/Documents/GitHub/clone_appe/a/upload_appe/upload_appe/appEng/node_modules/react-native-google-mobile-ads/android/build/generated/source/codegen/jni/*.cpp")
+set(OLD_GLOB
+  "/Users/sonluu/Documents/GitHub/clone_appe/a/upload_appe/upload_appe/appEng/node_modules/react-native-google-mobile-ads/android/build/generated/source/codegen/jni/RNGoogleMobileAdsSpec-generated.cpp"
+  )
+if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
+  message("-- GLOB mismatch!")
+  file(TOUCH_NOCREATE "/Users/sonluu/Documents/GitHub/clone_appe/a/upload_appe/upload_appe/appEng/android/app/.cxx/Debug/91p6z622/arm64-v8a/CMakeFiles/cmake.verify_globs")
+endif()
+
+# react_codegen_SRCS at /Users/sonluu/Documents/GitHub/clone_appe/a/upload_appe/upload_appe/appEng/node_modules/react-native-google-mobile-ads/android/build/generated/source/codegen/jni/CMakeLists.txt:9 (file)
+file(GLOB NEW_GLOB LIST_DIRECTORIES true "/Users/sonluu/Documents/GitHub/clone_appe/a/upload_appe/upload_appe/appEng/node_modules/react-native-google-mobile-ads/android/build/generated/source/codegen/jni/react/renderer/components/RNGoogleMobileAdsSpec/*.cpp")
+set(OLD_GLOB
+  "/Users/sonluu/Documents/GitHub/clone_appe/a/upload_appe/upload_appe/appEng/node_modules/react-native-google-mobile-ads/android/build/generated/source/codegen/jni/react/renderer/components/RNGoogleMobileAdsSpec/EventEmitters.cpp"
+  "/Users/sonluu/Documents/GitHub/clone_appe/a/upload_appe/upload_appe/appEng/node_modules/react-native-google-mobile-ads/android/build/generated/source/codegen/jni/react/renderer/components/RNGoogleMobileAdsSpec/Props.cpp"
+  "/Users/sonluu/Documents/GitHub/clone_appe/a/upload_appe/upload_appe/appEng/node_modules/react-native-google-mobile-ads/android/build/generated/source/codegen/jni/react/renderer/components/RNGoogleMobileAdsSpec/RNGoogleMobileAdsSpecJSI-generated.cpp"
+  "/Users/sonluu/Documents/GitHub/clone_appe/a/upload_appe/upload_appe/appEng/node_modules/react-native-google-mobile-ads/android/build/generated/source/codegen/jni/react/renderer/components/RNGoogleMobileAdsSpec/ShadowNodes.cpp"
+  "/Users/sonluu/Documents/GitHub/clone_appe/a/upload_appe/upload_appe/appEng/node_modules/react-native-google-mobile-ads/android/build/generated/source/codegen/jni/react/renderer/components/RNGoogleMobileAdsSpec/States.cpp"
+  )
+if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
+  message("-- GLOB mismatch!")
+  file(TOUCH_NOCREATE "/Users/sonluu/Documents/GitHub/clone_appe/a/upload_appe/upload_appe/appEng/android/app/.cxx/Debug/91p6z622/arm64-v8a/CMakeFiles/cmake.verify_globs")
+endif()
+
 # LIB_CUSTOM_SRCS at /Users/sonluu/Documents/GitHub/clone_appe/a/upload_appe/upload_appe/appEng/node_modules/react-native-safe-area-context/android/src/main/jni/CMakeLists.txt:21 (file)
 file(GLOB NEW_GLOB LIST_DIRECTORIES true "/Users/sonluu/Documents/GitHub/clone_appe/a/upload_appe/upload_appe/appEng/node_modules/react-native-safe-area-context/android/src/main/jni/*.cpp")
 set(OLD_GLOB

@@ -102,11 +102,13 @@ export default class Xemlai extends React.Component {
   }
 
   check(inum) {
-    console.log("----------inum: ", inum);
+    console.log("----------inum: ", this.state.itemK);
+    console.log("----------da: ", this.state.da[inum - 1]);
+    console.log("----------answ1: ", this.bailam);
     if (this.state.itemK.length >= inum) {
       // [...Array(this.state.itemQ.length)].map((o, n) => {
       //   if (this.state.itemK[inum - 1] == this.state.item[n]) {
-      console.log("dap an: ", this.state.da[inum - 1]);
+      // console.log("dap an: ", this.state.da[inum - 1]);
       this.setState({
         //
         itemQ: inum,
@@ -257,7 +259,7 @@ export default class Xemlai extends React.Component {
     const { route, navigation } = this.props;
     this.nvt = navigation;
     const { bailam, socau, uid, email } = route.params;
-    console.log("------bailam:" + bailam);
+    // console.log("------bailam:" + bailam);
     var l = this.state.itemQ;
     const question = this.state.q;
     // console.log("----------item::::", this.state.item);
@@ -440,8 +442,6 @@ export default class Xemlai extends React.Component {
                   options={this.state.o}
                   renderOption={(option, selected, onSelect, index) => {
                     if (option == bailam[l - 1]) {
-                      console.log("helloooooooo");
-
                       if (option == this.state.dapan) {
                         return (
                           <TouchableOpacity
