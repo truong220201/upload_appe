@@ -109,10 +109,10 @@ export default class Huongdan extends React.Component {
 
     querySnapshotQS.forEach((doc) => {
       [...Array(this.i.length)].map((o, n) => {
-        // console.log("i= ", this.i.toString());
         if (
-          this.i[n] == `${doc.data().Id_cate_mtct}` &&
-          `${doc.data().Don_Kep}` != 1
+          (this.i[n] == `${doc.data().Id_cate_mtct}` &&
+            `${doc.data().Don_Kep}` != 1) ||
+          (this.state.socau == 50 && `${doc.data().Don_Kep}` != 1)
         ) {
           // console.log(
           //   "---------- don_kep: ",
