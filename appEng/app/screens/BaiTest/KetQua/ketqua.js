@@ -64,7 +64,6 @@ export default class Ketqua extends React.Component {
       uid,
       email,
     } = route.params;
-    console.log("baiiiii tappppp da lam:", diem);
 
     return (
       <ImageBackground

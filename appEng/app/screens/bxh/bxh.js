@@ -85,7 +85,7 @@ class Bxh extends React.Component {
     this.getData();
     for (let i = 1; i <= this.listScore.length; i++) {
       Elements.push(
-        <View style={{ flexDirection: "row", alignItems: "center" }}>
+        <View key={i} style={{ flexDirection: "row", alignItems: "center" }}>
           <View
             style={{
               borderRadius: 100,
