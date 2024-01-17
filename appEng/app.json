@@ -23,9 +23,6 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
-      },
-      "config": {
-        "googleMobileAdsAppId": "ca-app-pub-6851800445634158~3575687852"
       }
     },
     "web": {
@@ -35,6 +32,9 @@
       "eas": {
         "projectId": "654127fa-0123-4602-b031-ceb4d1572598"
       }
+    },
+    "ios": {
+      "bundleIdentifier": "com.moonauz.appe"
     }
   },
   "react-native-google-mobile-ads": {

@@ -1,3 +1,0 @@
-/Users/sonluu/Documents/GitHub/clone_appe/a/upload_appe/upload_appe/appEng/node_modules/react-native-screens/android/src/main/jni/CMakeLists.txt
-/Users/sonluu/Documents/GitHub/clone_appe/a/upload_appe/upload_appe/appEng/node_modules/react-native-webview/android/build/generated/source/codegen/jni/CMakeLists.txt
-/Users/sonluu/Documents/GitHub/clone_appe/a/upload_appe/upload_appe/appEng/node_modules/react-native/ReactAndroid/cmake-utils/default-app-setup/CMakeLists.txt

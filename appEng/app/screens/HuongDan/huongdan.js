@@ -1,21 +1,13 @@
 import React, { useState } from "react";
 import {
   Dimensions,
-  Animated,
   TouchableOpacity,
-  TouchableHighlight,
-  ScrollView,
   Text,
   View,
-  Button,
   StyleSheet,
-  Image,
-  ImageBackground,
 } from "react-native";
-import { FontAwesome5 } from "@expo/vector-icons";
 import { LinearGradient } from "expo-linear-gradient";
 import { Icon } from "react-native-elements";
-import { doc, setDoc } from "firebase/firestore";
 import { collection, getDocs } from "firebase/firestore";
 import { firebaseApp } from "../../../components/firebaseConfig";
 import { getFirestore } from "firebase/firestore";
@@ -197,8 +189,6 @@ export default class Huongdan extends React.Component {
   }
 
   render() {
-    const windowWidth = Dimensions.get("window").width;
-    const windowHeight = Dimensions.get("window").height;
     const { navigation, route } = this.props;
     const { loaiId, ten, id, name, uid, email } = route.params;
 
@@ -297,7 +287,6 @@ export default class Huongdan extends React.Component {
             </View>
           </View>
         </View>
-
         <View style={styles.vw4}>
           <LinearGradient
             start={{ x: 0, y: 0.75 }}
